@@ -217,6 +217,12 @@ func (OrderV1State) ElementType() reflect.Type {
 	return reflect.TypeOf((*orderV1State)(nil)).Elem()
 }
 
+// OrderV1Exists checks whether an existing OrderV1 resource with the given ID exists.
+func OrderV1Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OrderV1State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:keymanager/orderV1:OrderV1", id, state, "", opts...)
+}
+
 type orderV1Args struct {
 	// Dictionary containing the order metadata used to generate the order. The structure is described below.
 	Meta OrderV1Meta `pulumi:"meta"`

@@ -193,6 +193,12 @@ func (FlavorprofileV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorprofileV2State)(nil)).Elem()
 }
 
+// FlavorprofileV2Exists checks whether an existing FlavorprofileV2 resource with the given ID exists.
+func FlavorprofileV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlavorprofileV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:loadbalancer/flavorprofileV2:FlavorprofileV2", id, state, "", opts...)
+}
+
 type flavorprofileV2Args struct {
 	// String that passes the flavorData for the flavorprofile.
 	// The data that are allowed depend on the `providerName` that is passed. jsonencode

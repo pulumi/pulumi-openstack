@@ -166,6 +166,12 @@ func (ImageAccessAcceptState) ElementType() reflect.Type {
 	return reflect.TypeOf((*imageAccessAcceptState)(nil)).Elem()
 }
 
+// ImageAccessAcceptExists checks whether an existing ImageAccessAccept resource with the given ID exists.
+func ImageAccessAcceptExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ImageAccessAcceptState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:images/imageAccessAccept:ImageAccessAccept", id, state, "", opts...)
+}
+
 type imageAccessAcceptArgs struct {
 	// The proposed image ID.
 	ImageId string `pulumi:"imageId"`

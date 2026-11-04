@@ -195,6 +195,12 @@ func (IkePolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ikePolicyState)(nil)).Elem()
 }
 
+// IkePolicyExists checks whether an existing IkePolicy resource with the given ID exists.
+func IkePolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IkePolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:vpnaas/ikePolicy:IkePolicy", id, state, "", opts...)
+}
+
 type ikePolicyArgs struct {
 	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
 	// aes-xcbc, aes-cmac. Default is sha1.

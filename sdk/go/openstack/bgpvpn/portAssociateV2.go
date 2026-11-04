@@ -169,6 +169,12 @@ func (PortAssociateV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*portAssociateV2State)(nil)).Elem()
 }
 
+// PortAssociateV2Exists checks whether an existing PortAssociateV2 resource with the given ID exists.
+func PortAssociateV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PortAssociateV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:bgpvpn/portAssociateV2:PortAssociateV2", id, state, "", opts...)
+}
+
 type portAssociateV2Args struct {
 	// A boolean flag indicating whether fixed
 	// IPs should be advertised. Defaults to true.

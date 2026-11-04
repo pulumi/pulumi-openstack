@@ -809,6 +809,42 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return NodeGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            max_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+            min_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterId"] = cluster_id
+        __props__["createdAt"] = created_at
+        __props__["dockerVolumeSize"] = docker_volume_size
+        __props__["flavorId"] = flavor_id
+        __props__["imageId"] = image_id
+        __props__["labels"] = labels
+        __props__["maxNodeCount"] = max_node_count
+        __props__["mergeLabels"] = merge_labels
+        __props__["minNodeCount"] = min_node_count
+        __props__["name"] = name
+        __props__["nodeCount"] = node_count
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["role"] = role
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'openstack:containerinfra/nodeGroup:NodeGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[_builtins.str]:

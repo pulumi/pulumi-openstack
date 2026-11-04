@@ -859,6 +859,44 @@ class QuotaSetV2(pulumi.CustomResource):
         __props__.__dict__["server_groups"] = server_groups
         return QuotaSetV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cores: pulumi.Input[Optional[_builtins.int]] = None,
+            fixed_ips: pulumi.Input[Optional[_builtins.int]] = None,
+            floating_ips: pulumi.Input[Optional[_builtins.int]] = None,
+            injected_file_content_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            injected_file_path_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            injected_files: pulumi.Input[Optional[_builtins.int]] = None,
+            instances: pulumi.Input[Optional[_builtins.int]] = None,
+            key_pairs: pulumi.Input[Optional[_builtins.int]] = None,
+            metadata_items: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ram: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            security_groups: pulumi.Input[Optional[_builtins.int]] = None,
+            server_group_members: pulumi.Input[Optional[_builtins.int]] = None,
+            server_groups: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cores"] = cores
+        __props__["fixedIps"] = fixed_ips
+        __props__["floatingIps"] = floating_ips
+        __props__["injectedFileContentBytes"] = injected_file_content_bytes
+        __props__["injectedFilePathBytes"] = injected_file_path_bytes
+        __props__["injectedFiles"] = injected_files
+        __props__["instances"] = instances
+        __props__["keyPairs"] = key_pairs
+        __props__["metadataItems"] = metadata_items
+        __props__["projectId"] = project_id
+        __props__["ram"] = ram
+        __props__["region"] = region
+        __props__["securityGroupRules"] = security_group_rules
+        __props__["securityGroups"] = security_groups
+        __props__["serverGroupMembers"] = server_group_members
+        __props__["serverGroups"] = server_groups
+        return pulumi.runtime.exists_resource(None, 'openstack:compute/quotaSetV2:QuotaSetV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cores(self) -> pulumi.Output[_builtins.int]:

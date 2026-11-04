@@ -63,11 +63,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
+     * @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
      * 
      */
-    @Deprecated /* openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
+    @Deprecated
     public static Output<GetFwGroupV2Result> getFwGroupV2() {
         return getFwGroupV2(GetFwGroupV2Args.Empty, InvokeOptions.Empty);
     }
@@ -107,11 +106,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
+     * @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
      * 
      */
-    @Deprecated /* openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
+    @Deprecated
     public static CompletableFuture<GetFwGroupV2Result> getFwGroupV2Plain() {
         return getFwGroupV2Plain(GetFwGroupV2PlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -151,11 +149,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
+     * @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
      * 
      */
-    @Deprecated /* openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
+    @Deprecated
     public static Output<GetFwGroupV2Result> getFwGroupV2(GetFwGroupV2Args args) {
         return getFwGroupV2(args, InvokeOptions.Empty);
     }
@@ -195,11 +192,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
+     * @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
      * 
      */
-    @Deprecated /* openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
+    @Deprecated
     public static CompletableFuture<GetFwGroupV2Result> getFwGroupV2Plain(GetFwGroupV2PlainArgs args) {
         return getFwGroupV2Plain(args, InvokeOptions.Empty);
     }
@@ -239,11 +235,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
+     * @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
      * 
      */
-    @Deprecated /* openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
+    @Deprecated
     public static Output<GetFwGroupV2Result> getFwGroupV2(GetFwGroupV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("openstack:index/getFwGroupV2:getFwGroupV2", TypeShape.of(GetFwGroupV2Result.class), args, Utilities.withVersion(options));
     }
@@ -283,11 +278,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
+     * @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
      * 
      */
-    @Deprecated /* openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
+    @Deprecated
     public static Output<GetFwGroupV2Result> getFwGroupV2(GetFwGroupV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:index/getFwGroupV2:getFwGroupV2", TypeShape.of(GetFwGroupV2Result.class), args, Utilities.withVersion(options));
     }
@@ -327,11 +321,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
+     * @deprecated openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2
      * 
      */
-    @Deprecated /* openstack.index/getfwgroupv2.getFwGroupV2 has been deprecated in favor of openstack.firewall/getgroupv2.getGroupV2 */
+    @Deprecated
     public static CompletableFuture<GetFwGroupV2Result> getFwGroupV2Plain(GetFwGroupV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:index/getFwGroupV2:getFwGroupV2", TypeShape.of(GetFwGroupV2Result.class), args, Utilities.withVersion(options));
     }
@@ -371,11 +364,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
+     * @deprecated openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
      * 
      */
-    @Deprecated /* openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2 */
+    @Deprecated
     public static Output<GetFwPolicyV2Result> getFwPolicyV2() {
         return getFwPolicyV2(GetFwPolicyV2Args.Empty, InvokeOptions.Empty);
     }
@@ -415,11 +407,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
+     * @deprecated openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
      * 
      */
-    @Deprecated /* openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2 */
+    @Deprecated
     public static CompletableFuture<GetFwPolicyV2Result> getFwPolicyV2Plain() {
         return getFwPolicyV2Plain(GetFwPolicyV2PlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -459,11 +450,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
+     * @deprecated openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
      * 
      */
-    @Deprecated /* openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2 */
+    @Deprecated
     public static Output<GetFwPolicyV2Result> getFwPolicyV2(GetFwPolicyV2Args args) {
         return getFwPolicyV2(args, InvokeOptions.Empty);
     }
@@ -503,11 +493,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
+     * @deprecated openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
      * 
      */
-    @Deprecated /* openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2 */
+    @Deprecated
     public static CompletableFuture<GetFwPolicyV2Result> getFwPolicyV2Plain(GetFwPolicyV2PlainArgs args) {
         return getFwPolicyV2Plain(args, InvokeOptions.Empty);
     }
@@ -547,11 +536,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
+     * @deprecated openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
      * 
      */
-    @Deprecated /* openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2 */
+    @Deprecated
     public static Output<GetFwPolicyV2Result> getFwPolicyV2(GetFwPolicyV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("openstack:index/getFwPolicyV2:getFwPolicyV2", TypeShape.of(GetFwPolicyV2Result.class), args, Utilities.withVersion(options));
     }
@@ -591,11 +579,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
+     * @deprecated openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
      * 
      */
-    @Deprecated /* openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2 */
+    @Deprecated
     public static Output<GetFwPolicyV2Result> getFwPolicyV2(GetFwPolicyV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:index/getFwPolicyV2:getFwPolicyV2", TypeShape.of(GetFwPolicyV2Result.class), args, Utilities.withVersion(options));
     }
@@ -635,11 +622,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
+     * @deprecated openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2
      * 
      */
-    @Deprecated /* openstack.index/getfwpolicyv2.getFwPolicyV2 has been deprecated in favor of openstack.firewall/getpolicyv2.getPolicyV2 */
+    @Deprecated
     public static CompletableFuture<GetFwPolicyV2Result> getFwPolicyV2Plain(GetFwPolicyV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:index/getFwPolicyV2:getFwPolicyV2", TypeShape.of(GetFwPolicyV2Result.class), args, Utilities.withVersion(options));
     }
@@ -679,11 +665,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
+     * @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
      * 
      */
-    @Deprecated /* openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
+    @Deprecated
     public static Output<GetFwRuleV2Result> getFwRuleV2() {
         return getFwRuleV2(GetFwRuleV2Args.Empty, InvokeOptions.Empty);
     }
@@ -723,11 +708,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
+     * @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
      * 
      */
-    @Deprecated /* openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
+    @Deprecated
     public static CompletableFuture<GetFwRuleV2Result> getFwRuleV2Plain() {
         return getFwRuleV2Plain(GetFwRuleV2PlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -767,11 +751,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
+     * @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
      * 
      */
-    @Deprecated /* openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
+    @Deprecated
     public static Output<GetFwRuleV2Result> getFwRuleV2(GetFwRuleV2Args args) {
         return getFwRuleV2(args, InvokeOptions.Empty);
     }
@@ -811,11 +794,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
+     * @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
      * 
      */
-    @Deprecated /* openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
+    @Deprecated
     public static CompletableFuture<GetFwRuleV2Result> getFwRuleV2Plain(GetFwRuleV2PlainArgs args) {
         return getFwRuleV2Plain(args, InvokeOptions.Empty);
     }
@@ -855,11 +837,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
+     * @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
      * 
      */
-    @Deprecated /* openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
+    @Deprecated
     public static Output<GetFwRuleV2Result> getFwRuleV2(GetFwRuleV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("openstack:index/getFwRuleV2:getFwRuleV2", TypeShape.of(GetFwRuleV2Result.class), args, Utilities.withVersion(options));
     }
@@ -899,11 +880,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
+     * @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
      * 
      */
-    @Deprecated /* openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
+    @Deprecated
     public static Output<GetFwRuleV2Result> getFwRuleV2(GetFwRuleV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:index/getFwRuleV2:getFwRuleV2", TypeShape.of(GetFwRuleV2Result.class), args, Utilities.withVersion(options));
     }
@@ -943,11 +923,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
+     * @deprecated openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2
      * 
      */
-    @Deprecated /* openstack.index/getfwrulev2.getFwRuleV2 has been deprecated in favor of openstack.firewall/getrulev2.getRuleV2 */
+    @Deprecated
     public static CompletableFuture<GetFwRuleV2Result> getFwRuleV2Plain(GetFwRuleV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:index/getFwRuleV2:getFwRuleV2", TypeShape.of(GetFwRuleV2Result.class), args, Utilities.withVersion(options));
     }
@@ -1267,11 +1246,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * @deprecated openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
      * 
      */
-    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
+    @Deprecated
     public static Output<WorkflowWorkflowV2Result> workflowWorkflowV2() {
         return workflowWorkflowV2(WorkflowWorkflowV2Args.Empty, InvokeOptions.Empty);
     }
@@ -1311,11 +1289,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * @deprecated openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
      * 
      */
-    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
+    @Deprecated
     public static CompletableFuture<WorkflowWorkflowV2Result> workflowWorkflowV2Plain() {
         return workflowWorkflowV2Plain(WorkflowWorkflowV2PlainArgs.Empty, InvokeOptions.Empty);
     }
@@ -1355,11 +1332,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * @deprecated openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
      * 
      */
-    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
+    @Deprecated
     public static Output<WorkflowWorkflowV2Result> workflowWorkflowV2(WorkflowWorkflowV2Args args) {
         return workflowWorkflowV2(args, InvokeOptions.Empty);
     }
@@ -1399,11 +1375,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * @deprecated openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
      * 
      */
-    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
+    @Deprecated
     public static CompletableFuture<WorkflowWorkflowV2Result> workflowWorkflowV2Plain(WorkflowWorkflowV2PlainArgs args) {
         return workflowWorkflowV2Plain(args, InvokeOptions.Empty);
     }
@@ -1443,11 +1418,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * @deprecated openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
      * 
      */
-    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
+    @Deprecated
     public static Output<WorkflowWorkflowV2Result> workflowWorkflowV2(WorkflowWorkflowV2Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", TypeShape.of(WorkflowWorkflowV2Result.class), args, Utilities.withVersion(options));
     }
@@ -1487,11 +1461,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * @deprecated openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
      * 
      */
-    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
+    @Deprecated
     public static Output<WorkflowWorkflowV2Result> workflowWorkflowV2(WorkflowWorkflowV2Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", TypeShape.of(WorkflowWorkflowV2Result.class), args, Utilities.withVersion(options));
     }
@@ -1531,11 +1504,10 @@ public final class OpenstackFunctions {
      * }
      * </pre>
      * 
-     * @deprecated
-     * openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
+     * @deprecated openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2
      * 
      */
-    @Deprecated /* openstack.index/workflowworkflowv2.WorkflowWorkflowV2 has been deprecated in favor of openstack.index/getworkflowworkflowv2.getWorkflowWorkflowV2 */
+    @Deprecated
     public static CompletableFuture<WorkflowWorkflowV2Result> workflowWorkflowV2Plain(WorkflowWorkflowV2PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("openstack:index/workflowWorkflowV2:WorkflowWorkflowV2", TypeShape.of(WorkflowWorkflowV2Result.class), args, Utilities.withVersion(options));
     }

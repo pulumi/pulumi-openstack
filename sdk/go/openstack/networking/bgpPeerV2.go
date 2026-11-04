@@ -180,6 +180,12 @@ func (BgpPeerV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpPeerV2State)(nil)).Elem()
 }
 
+// BgpPeerV2Exists checks whether an existing BgpPeerV2 resource with the given ID exists.
+func BgpPeerV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpPeerV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/bgpPeerV2:BgpPeerV2", id, state, "", opts...)
+}
+
 type bgpPeerV2Args struct {
 	// The authentication type to use. Can be one of `none`
 	// or `md5`. Defaults to `none`. If set to not `none`, the `password` argument

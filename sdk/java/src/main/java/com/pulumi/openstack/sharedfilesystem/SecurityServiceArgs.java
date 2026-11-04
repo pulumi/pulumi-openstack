@@ -151,7 +151,7 @@ public final class SecurityServiceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The security service type - can either be active\_directory,
+     * The security service type - can either be active&#92;_directory,
      * kerberos or ldap.  Changing this updates the existing security service.
      * 
      */
@@ -159,7 +159,7 @@ public final class SecurityServiceArgs extends com.pulumi.resources.ResourceArgs
     private Output<String> type;
 
     /**
-     * @return The security service type - can either be active\_directory,
+     * @return The security service type - can either be active&#92;_directory,
      * kerberos or ldap.  Changing this updates the existing security service.
      * 
      */
@@ -400,7 +400,7 @@ public final class SecurityServiceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The security service type - can either be active\_directory,
+         * @param type The security service type - can either be active&#92;_directory,
          * kerberos or ldap.  Changing this updates the existing security service.
          * 
          * @return builder
@@ -412,7 +412,7 @@ public final class SecurityServiceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param type The security service type - can either be active\_directory,
+         * @param type The security service type - can either be active&#92;_directory,
          * kerberos or ldap.  Changing this updates the existing security service.
          * 
          * @return builder

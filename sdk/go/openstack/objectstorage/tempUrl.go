@@ -207,6 +207,12 @@ func (TempUrlState) ElementType() reflect.Type {
 	return reflect.TypeOf((*tempUrlState)(nil)).Elem()
 }
 
+// TempUrlExists checks whether an existing TempUrl resource with the given ID exists.
+func TempUrlExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TempUrlState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:objectstorage/tempUrl:TempUrl", id, state, "", opts...)
+}
+
 type tempUrlArgs struct {
 	// The container name the object belongs to.
 	Container string `pulumi:"container"`

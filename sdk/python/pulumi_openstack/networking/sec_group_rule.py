@@ -911,6 +911,36 @@ class SecGroupRule(pulumi.CustomResource):
         __props__.__dict__["tenant_id"] = tenant_id
         return SecGroupRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            ethertype: pulumi.Input[Optional[_builtins.str]] = None,
+            port_range_max: pulumi.Input[Optional[_builtins.int]] = None,
+            port_range_min: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_address_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["direction"] = direction
+        __props__["ethertype"] = ethertype
+        __props__["portRangeMax"] = port_range_max
+        __props__["portRangeMin"] = port_range_min
+        __props__["protocol"] = protocol
+        __props__["region"] = region
+        __props__["remoteAddressGroupId"] = remote_address_group_id
+        __props__["remoteGroupId"] = remote_group_id
+        __props__["remoteIpPrefix"] = remote_ip_prefix
+        __props__["securityGroupId"] = security_group_id
+        __props__["tenantId"] = tenant_id
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/secGroupRule:SecGroupRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

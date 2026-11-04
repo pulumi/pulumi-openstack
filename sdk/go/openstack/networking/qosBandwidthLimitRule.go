@@ -154,6 +154,12 @@ func (QosBandwidthLimitRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosBandwidthLimitRuleState)(nil)).Elem()
 }
 
+// QosBandwidthLimitRuleExists checks whether an existing QosBandwidthLimitRule resource with the given ID exists.
+func QosBandwidthLimitRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QosBandwidthLimitRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule", id, state, "", opts...)
+}
+
 type qosBandwidthLimitRuleArgs struct {
 	// The direction of traffic. Defaults to "egress". Changing this updates the direction of the
 	// existing QoS bandwidth limit rule.

@@ -632,6 +632,34 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["volume_type"] = volume_type
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            databases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDatabaseArgs', 'InstanceDatabaseArgsDict', 'outputs.InstanceDatabase']]]]] = None,
+            datastore: pulumi.Input[Optional[Union['InstanceDatastoreArgs', 'InstanceDatastoreArgsDict', 'outputs.InstanceDatastore']]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict', 'outputs.InstanceNetwork']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceUserArgs', 'InstanceUserArgsDict', 'outputs.InstanceUser']]]]] = None,
+            volume_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["addresses"] = addresses
+        __props__["configurationId"] = configuration_id
+        __props__["databases"] = databases
+        __props__["datastore"] = datastore
+        __props__["flavorId"] = flavor_id
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["users"] = users
+        __props__["volumeType"] = volume_type
+        return pulumi.runtime.exists_resource(None, 'openstack:database/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:

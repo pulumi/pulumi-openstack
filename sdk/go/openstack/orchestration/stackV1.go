@@ -278,6 +278,12 @@ func (StackV1State) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackV1State)(nil)).Elem()
 }
 
+// StackV1Exists checks whether an existing StackV1 resource with the given ID exists.
+func StackV1Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StackV1State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:orchestration/stackV1:StackV1", id, state, "", opts...)
+}
+
 type stackV1Args struct {
 	// A list of stack outputs.
 	StackOutputs []StackV1StackOutput `pulumi:"StackOutputs"`

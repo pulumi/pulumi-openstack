@@ -421,6 +421,12 @@ func (ContainerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerState)(nil)).Elem()
 }
 
+// ContainerExists checks whether an existing Container resource with the given ID exists.
+func ContainerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContainerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:objectstorage/container:Container", id, state, "", opts...)
+}
+
 type containerArgs struct {
 	// Sets an access control list (ACL) that grants
 	// read access. This header can contain a comma-delimited list of users that can

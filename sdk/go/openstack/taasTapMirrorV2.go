@@ -202,6 +202,12 @@ func (TaasTapMirrorV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*taasTapMirrorV2State)(nil)).Elem()
 }
 
+// TaasTapMirrorV2Exists checks whether an existing TaasTapMirrorV2 resource with the given ID exists.
+func TaasTapMirrorV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TaasTapMirrorV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:index/taasTapMirrorV2:TaasTapMirrorV2", id, state, "", opts...)
+}
+
 type taasTapMirrorV2Args struct {
 	// The human-readable description for the Tap Mirror.
 	// Changing this updates the description of the existing Tap Mirror.

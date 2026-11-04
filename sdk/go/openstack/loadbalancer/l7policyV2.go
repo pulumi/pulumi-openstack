@@ -261,6 +261,12 @@ func (L7PolicyV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*l7policyV2State)(nil)).Elem()
 }
 
+// L7PolicyV2Exists checks whether an existing L7PolicyV2 resource with the given ID exists.
+func L7PolicyV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *L7PolicyV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:loadbalancer/l7PolicyV2:L7PolicyV2", id, state, "", opts...)
+}
+
 type l7policyV2Args struct {
 	// The L7 Policy action - can either be REDIRECT\_TO\_POOL,
 	// REDIRECT\_TO\_URL or REJECT.

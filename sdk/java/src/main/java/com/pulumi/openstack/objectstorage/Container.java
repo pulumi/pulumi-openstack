@@ -488,11 +488,10 @@ public class Container extends com.pulumi.resources.CustomResource {
      * Enable legacy object versioning. The
      * structure is described below.
      * 
-     * @deprecated
-     * Use newer &#34;versioning&#34; implementation
+     * @deprecated Use newer &#34;versioning&#34; implementation
      * 
      */
-    @Deprecated /* Use newer ""versioning"" implementation */
+    @Deprecated
     @Export(name="versioningLegacy", refs={ContainerVersioningLegacy.class}, tree="[0]")
     private Output</* @Nullable */ ContainerVersioningLegacy> versioningLegacy;
 

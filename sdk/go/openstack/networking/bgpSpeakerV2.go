@@ -217,6 +217,12 @@ func (BgpSpeakerV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpSpeakerV2State)(nil)).Elem()
 }
 
+// BgpSpeakerV2Exists checks whether an existing BgpSpeakerV2 resource with the given ID exists.
+func BgpSpeakerV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpSpeakerV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/bgpSpeakerV2:BgpSpeakerV2", id, state, "", opts...)
+}
+
 type bgpSpeakerV2Args struct {
 	// A boolean value indicating
 	// whether to advertise floating IP host routes. Defaults to `true`.

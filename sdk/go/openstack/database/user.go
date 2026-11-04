@@ -143,6 +143,12 @@ func (UserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userState)(nil)).Elem()
 }
 
+// UserExists checks whether an existing User resource with the given ID exists.
+func UserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:database/user:User", id, state, "", opts...)
+}
+
 type userArgs struct {
 	// A list of database user should have access to.
 	Databases []string `pulumi:"databases"`

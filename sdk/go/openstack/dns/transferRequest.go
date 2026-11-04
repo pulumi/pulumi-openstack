@@ -164,6 +164,12 @@ func (TransferRequestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transferRequestState)(nil)).Elem()
 }
 
+// TransferRequestExists checks whether an existing TransferRequest resource with the given ID exists.
+func TransferRequestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransferRequestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:dns/transferRequest:TransferRequest", id, state, "", opts...)
+}
+
 type transferRequestArgs struct {
 	// A description of the zone tranfer request.
 	Description *string `pulumi:"description"`

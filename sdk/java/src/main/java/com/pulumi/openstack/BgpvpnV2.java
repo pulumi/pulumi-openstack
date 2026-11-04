@@ -57,11 +57,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * @deprecated
- * openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2
+ * @deprecated openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2
  * 
  */
-@Deprecated /* openstack.index/bgpvpnv2.BgpvpnV2 has been deprecated in favor of openstack.bgpvpn/v2.V2 */
+@Deprecated
 @ResourceType(type="openstack:index/bgpvpnV2:BgpvpnV2")
 public class BgpvpnV2 extends com.pulumi.resources.CustomResource {
     /**
@@ -97,7 +96,7 @@ public class BgpvpnV2 extends com.pulumi.resources.CustomResource {
         return this.importTargets;
     }
     /**
-     * The default BGP LOCAL\_PREF of routes that will be
+     * The default BGP LOCAL&#92;_PREF of routes that will be
      * advertised to the BGP VPN, unless overridden per-route.
      * 
      */
@@ -105,7 +104,7 @@ public class BgpvpnV2 extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> localPref;
 
     /**
-     * @return The default BGP LOCAL\_PREF of routes that will be
+     * @return The default BGP LOCAL&#92;_PREF of routes that will be
      * advertised to the BGP VPN, unless overridden per-route.
      * 
      */

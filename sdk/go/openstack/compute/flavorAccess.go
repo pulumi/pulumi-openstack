@@ -148,6 +148,12 @@ func (FlavorAccessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorAccessState)(nil)).Elem()
 }
 
+// FlavorAccessExists checks whether an existing FlavorAccess resource with the given ID exists.
+func FlavorAccessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlavorAccessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:compute/flavorAccess:FlavorAccess", id, state, "", opts...)
+}
+
 type flavorAccessArgs struct {
 	// The UUID of flavor to use. Changing this creates a new flavor access.
 	FlavorId string `pulumi:"flavorId"`

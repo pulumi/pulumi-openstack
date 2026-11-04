@@ -185,6 +185,12 @@ func (RbacPolicyV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*rbacPolicyV2State)(nil)).Elem()
 }
 
+// RbacPolicyV2Exists checks whether an existing RbacPolicyV2 resource with the given ID exists.
+func RbacPolicyV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RbacPolicyV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/rbacPolicyV2:RbacPolicyV2", id, state, "", opts...)
+}
+
 type rbacPolicyV2Args struct {
 	// Action for the RBAC policy. Can either be
 	// `accessAsExternal` or `accessAsShared`.

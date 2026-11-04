@@ -393,6 +393,22 @@ class TransferAccept(pulumi.CustomResource):
         __props__.__dict__["zone_transfer_request_id"] = zone_transfer_request_id
         return TransferAccept(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disable_status_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone_transfer_request_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disableStatusCheck"] = disable_status_check
+        __props__["key"] = key
+        __props__["region"] = region
+        __props__["valueSpecs"] = value_specs
+        __props__["zoneTransferRequestId"] = zone_transfer_request_id
+        return pulumi.runtime.exists_resource(None, 'openstack:dns/transferAccept:TransferAccept', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disableStatusCheck")
     def disable_status_check(self) -> pulumi.Output[Optional[_builtins.bool]]:

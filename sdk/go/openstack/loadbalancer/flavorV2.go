@@ -166,6 +166,12 @@ func (FlavorV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorV2State)(nil)).Elem()
 }
 
+// FlavorV2Exists checks whether an existing FlavorV2 resource with the given ID exists.
+func FlavorV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlavorV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:loadbalancer/flavorV2:FlavorV2", id, state, "", opts...)
+}
+
 type flavorV2Args struct {
 	// The description of the flavor. Changing this
 	// updates the existing flavor.

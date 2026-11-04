@@ -63,11 +63,10 @@ import javax.annotation.Nullable;
  * $ pulumi import openstack:index/lbLoadbalancerV2:LbLoadbalancerV2 loadbalancer_1 19bcfdc7-c521-4a7e-9459-6750bd16df76
  * ```
  * 
- * @deprecated
- * openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer
+ * @deprecated openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer
  * 
  */
-@Deprecated /* openstack.index/lbloadbalancerv2.LbLoadbalancerV2 has been deprecated in favor of openstack.loadbalancer/loadbalancer.LoadBalancer */
+@Deprecated
 @ResourceType(type="openstack:index/lbLoadbalancerV2:LbLoadbalancerV2")
 public class LbLoadbalancerV2 extends com.pulumi.resources.CustomResource {
     /**

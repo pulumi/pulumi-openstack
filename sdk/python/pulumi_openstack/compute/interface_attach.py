@@ -592,6 +592,22 @@ class InterfaceAttach(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return InterfaceAttach(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            fixed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            port_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["fixedIp"] = fixed_ip
+        __props__["instanceId"] = instance_id
+        __props__["networkId"] = network_id
+        __props__["portId"] = port_id
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'openstack:compute/interfaceAttach:InterfaceAttach', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="fixedIp")
     def fixed_ip(self) -> pulumi.Output[_builtins.str]:

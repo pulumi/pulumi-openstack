@@ -1411,6 +1411,62 @@ class Port(pulumi.CustomResource):
         __props__.__dict__["value_specs"] = value_specs
         return Port(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            all_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            all_security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allowed_address_pairs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortAllowedAddressPairArgs', 'PortAllowedAddressPairArgsDict', 'outputs.PortAllowedAddressPair']]]]] = None,
+            binding: pulumi.Input[Optional[Union['PortBindingArgs', 'PortBindingArgsDict', 'outputs.PortBinding']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            device_id: pulumi.Input[Optional[_builtins.str]] = None,
+            device_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_dhcp_options: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortExtraDhcpOptionArgs', 'PortExtraDhcpOptionArgsDict', 'outputs.PortExtraDhcpOption']]]]] = None,
+            fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PortFixedIpArgs', 'PortFixedIpArgsDict', 'outputs.PortFixedIp']]]]] = None,
+            mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            no_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            no_security_groups: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminStateUp"] = admin_state_up
+        __props__["allFixedIps"] = all_fixed_ips
+        __props__["allSecurityGroupIds"] = all_security_group_ids
+        __props__["allTags"] = all_tags
+        __props__["allowedAddressPairs"] = allowed_address_pairs
+        __props__["binding"] = binding
+        __props__["description"] = description
+        __props__["deviceId"] = device_id
+        __props__["deviceOwner"] = device_owner
+        __props__["dnsAssignments"] = dns_assignments
+        __props__["dnsName"] = dns_name
+        __props__["extraDhcpOptions"] = extra_dhcp_options
+        __props__["fixedIps"] = fixed_ips
+        __props__["macAddress"] = mac_address
+        __props__["name"] = name
+        __props__["networkId"] = network_id
+        __props__["noFixedIp"] = no_fixed_ip
+        __props__["noSecurityGroups"] = no_security_groups
+        __props__["portSecurityEnabled"] = port_security_enabled
+        __props__["qosPolicyId"] = qos_policy_id
+        __props__["region"] = region
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        __props__["valueSpecs"] = value_specs
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/port:Port', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[_builtins.bool]:

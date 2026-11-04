@@ -172,6 +172,12 @@ func (RouterInterfaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerInterfaceState)(nil)).Elem()
 }
 
+// RouterInterfaceExists checks whether an existing RouterInterface resource with the given ID exists.
+func RouterInterfaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterInterfaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/routerInterface:RouterInterface", id, state, "", opts...)
+}
+
 type routerInterfaceArgs struct {
 	// A boolean indicating whether the routes from the
 	// corresponding router ID should be deleted so that the router interface can

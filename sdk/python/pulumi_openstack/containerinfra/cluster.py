@@ -1206,6 +1206,68 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_address: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            coe_version: pulumi.Input[Optional[_builtins.str]] = None,
+            container_version: pulumi.Input[Optional[_builtins.str]] = None,
+            create_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            discovery_url: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+            fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+            fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor: pulumi.Input[Optional[_builtins.str]] = None,
+            floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            keypair: pulumi.Input[Optional[_builtins.str]] = None,
+            kubeconfig: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            master_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            master_count: pulumi.Input[Optional[_builtins.int]] = None,
+            master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+            master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            merge_labels: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_id: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiAddress"] = api_address
+        __props__["clusterTemplateId"] = cluster_template_id
+        __props__["coeVersion"] = coe_version
+        __props__["containerVersion"] = container_version
+        __props__["createTimeout"] = create_timeout
+        __props__["createdAt"] = created_at
+        __props__["discoveryUrl"] = discovery_url
+        __props__["dockerVolumeSize"] = docker_volume_size
+        __props__["fixedNetwork"] = fixed_network
+        __props__["fixedSubnet"] = fixed_subnet
+        __props__["flavor"] = flavor
+        __props__["floatingIpEnabled"] = floating_ip_enabled
+        __props__["keypair"] = keypair
+        __props__["kubeconfig"] = kubeconfig
+        __props__["labels"] = labels
+        __props__["masterAddresses"] = master_addresses
+        __props__["masterCount"] = master_count
+        __props__["masterFlavor"] = master_flavor
+        __props__["masterLbEnabled"] = master_lb_enabled
+        __props__["mergeLabels"] = merge_labels
+        __props__["name"] = name
+        __props__["nodeAddresses"] = node_addresses
+        __props__["nodeCount"] = node_count
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["stackId"] = stack_id
+        __props__["updatedAt"] = updated_at
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'openstack:containerinfra/cluster:Cluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiAddress")
     def api_address(self) -> pulumi.Output[_builtins.str]:

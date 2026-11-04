@@ -188,6 +188,12 @@ func (AddressScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressScopeState)(nil)).Elem()
 }
 
+// AddressScopeExists checks whether an existing AddressScope resource with the given ID exists.
+func AddressScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddressScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/addressScope:AddressScope", id, state, "", opts...)
+}
+
 type addressScopeArgs struct {
 	// IP version, either 4 (default) or 6. Changing this
 	// creates a new address-scope.

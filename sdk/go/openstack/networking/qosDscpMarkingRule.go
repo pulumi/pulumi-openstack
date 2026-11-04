@@ -134,6 +134,12 @@ func (QosDscpMarkingRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosDscpMarkingRuleState)(nil)).Elem()
 }
 
+// QosDscpMarkingRuleExists checks whether an existing QosDscpMarkingRule resource with the given ID exists.
+func QosDscpMarkingRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QosDscpMarkingRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/qosDscpMarkingRule:QosDscpMarkingRule", id, state, "", opts...)
+}
+
 type qosDscpMarkingRuleArgs struct {
 	// The value of DSCP mark. Changing this updates the DSCP mark value existing
 	// QoS DSCP marking rule.

@@ -149,12 +149,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var network1 = new Network("network1", NetworkArgs.builder()
  *             .name("network_1")
  *             .adminStateUp(true)
@@ -170,27 +170,27 @@ import javax.annotation.Nullable;
  *                 .hostId("b080b9cf-46e0-4ce8-ad47-0fd4accc872b")
  *                 .vnicType("baremetal")
  *                 .profile("""
- * {
- *   \"local_link_information\": [
- *     {
- *       \"switch_info\": \"info1\",
- *       \"port_id\": \"Ethernet3/4\",
- *       \"switch_id\": \"12:34:56:78:9A:BC\"
- *     },
- *     {
- *       \"switch_info\": \"info2\",
- *       \"port_id\": \"Ethernet3/4\",
- *       \"switch_id\": \"12:34:56:78:9A:BD\"
- *     }
+ * }{{@code
+ *   }&#92;{@code "local_link_information}&#92;{@code ": [
+ *     }{{@code
+ *       }&#92;{@code "switch_info}&#92;{@code ": }&#92;{@code "info1}&#92;{@code ",
+ *       }&#92;{@code "port_id}&#92;{@code ": }&#92;{@code "Ethernet3/4}&#92;{@code ",
+ *       }&#92;{@code "switch_id}&#92;{@code ": }&#92;{@code "12:34:56:78:9A:BC}&#92;{@code "
+ *     }}{@code ,
+ *     }{{@code
+ *       }&#92;{@code "switch_info}&#92;{@code ": }&#92;{@code "info2}&#92;{@code ",
+ *       }&#92;{@code "port_id}&#92;{@code ": }&#92;{@code "Ethernet3/4}&#92;{@code ",
+ *       }&#92;{@code "switch_id}&#92;{@code ": }&#92;{@code "12:34:56:78:9A:BD}&#92;{@code "
+ *     }}{@code
  *   ],
- *   \"vlan_type\": \"allowed\"
- * }
+ *   }&#92;{@code "vlan_type}&#92;{@code ": }&#92;{@code "allowed}&#92;{@code "
+ * }}{@code
  *                 """)
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

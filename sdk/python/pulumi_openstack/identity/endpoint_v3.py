@@ -453,6 +453,28 @@ class EndpointV3(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return EndpointV3(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            interface: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["endpointRegion"] = endpoint_region
+        __props__["interface"] = interface
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["serviceId"] = service_id
+        __props__["serviceName"] = service_name
+        __props__["serviceType"] = service_type
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'openstack:identity/endpointV3:EndpointV3', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="endpointRegion")
     def endpoint_region(self) -> pulumi.Output[_builtins.str]:

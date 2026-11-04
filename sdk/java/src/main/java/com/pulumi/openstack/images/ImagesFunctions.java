@@ -334,20 +334,20 @@ public final class ImagesFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .nameRegex("^Ubuntu 16}&#92;&#92;{@code .04.*-amd64")
      *             .sort("updated_at")
      *             .properties(Map.of("key", "value"))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -377,20 +377,20 @@ public final class ImagesFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .nameRegex("^Ubuntu 16}&#92;&#92;{@code .04.*-amd64")
      *             .sort("updated_at")
      *             .properties(Map.of("key", "value"))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -420,20 +420,20 @@ public final class ImagesFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .nameRegex("^Ubuntu 16}&#92;&#92;{@code .04.*-amd64")
      *             .sort("updated_at")
      *             .properties(Map.of("key", "value"))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -463,20 +463,20 @@ public final class ImagesFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .nameRegex("^Ubuntu 16}&#92;&#92;{@code .04.*-amd64")
      *             .sort("updated_at")
      *             .properties(Map.of("key", "value"))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -506,20 +506,20 @@ public final class ImagesFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .nameRegex("^Ubuntu 16}&#92;&#92;{@code .04.*-amd64")
      *             .sort("updated_at")
      *             .properties(Map.of("key", "value"))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -549,20 +549,20 @@ public final class ImagesFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .nameRegex("^Ubuntu 16}&#92;&#92;{@code .04.*-amd64")
      *             .sort("updated_at")
      *             .properties(Map.of("key", "value"))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 
@@ -592,20 +592,20 @@ public final class ImagesFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
      *         final var images = ImagesFunctions.getImageIds(GetImageIdsArgs.builder()
-     *             .nameRegex("^Ubuntu 16\\.04.*-amd64")
+     *             .nameRegex("^Ubuntu 16}&#92;&#92;{@code .04.*-amd64")
      *             .sort("updated_at")
      *             .properties(Map.of("key", "value"))
      *             .build());
      * 
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * 

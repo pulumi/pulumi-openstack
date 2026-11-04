@@ -649,6 +649,34 @@ class IkePolicy(pulumi.CustomResource):
         __props__.__dict__["value_specs"] = value_specs
         return IkePolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            ike_version: pulumi.Input[Optional[_builtins.str]] = None,
+            lifetimes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IkePolicyLifetimeArgs', 'IkePolicyLifetimeArgsDict', 'outputs.IkePolicyLifetime']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pfs: pulumi.Input[Optional[_builtins.str]] = None,
+            phase1_negotiation_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authAlgorithm"] = auth_algorithm
+        __props__["description"] = description
+        __props__["encryptionAlgorithm"] = encryption_algorithm
+        __props__["ikeVersion"] = ike_version
+        __props__["lifetimes"] = lifetimes
+        __props__["name"] = name
+        __props__["pfs"] = pfs
+        __props__["phase1NegotiationMode"] = phase1_negotiation_mode
+        __props__["region"] = region
+        __props__["tenantId"] = tenant_id
+        __props__["valueSpecs"] = value_specs
+        return pulumi.runtime.exists_resource(None, 'openstack:vpnaas/ikePolicy:IkePolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authAlgorithm")
     def auth_algorithm(self) -> pulumi.Output[Optional[_builtins.str]]:

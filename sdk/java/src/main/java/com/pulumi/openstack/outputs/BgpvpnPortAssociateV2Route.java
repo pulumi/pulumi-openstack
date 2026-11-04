@@ -20,7 +20,7 @@ public final class BgpvpnPortAssociateV2Route {
      */
     private @Nullable String bgpvpnId;
     /**
-     * @return The BGP LOCAL\_PREF value of the routes that will
+     * @return The BGP LOCAL&#92;_PREF value of the routes that will
      * be advertised.
      * 
      */
@@ -49,7 +49,7 @@ public final class BgpvpnPortAssociateV2Route {
         return Optional.ofNullable(this.bgpvpnId);
     }
     /**
-     * @return The BGP LOCAL\_PREF value of the routes that will
+     * @return The BGP LOCAL&#92;_PREF value of the routes that will
      * be advertised.
      * 
      */

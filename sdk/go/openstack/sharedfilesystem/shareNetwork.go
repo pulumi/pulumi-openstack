@@ -281,6 +281,12 @@ func (ShareNetworkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareNetworkState)(nil)).Elem()
 }
 
+// ShareNetworkExists checks whether an existing ShareNetwork resource with the given ID exists.
+func ShareNetworkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShareNetworkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:sharedfilesystem/shareNetwork:ShareNetwork", id, state, "", opts...)
+}
+
 type shareNetworkArgs struct {
 	// The human-readable description for the share network.
 	// Changing this updates the description of the existing share network.

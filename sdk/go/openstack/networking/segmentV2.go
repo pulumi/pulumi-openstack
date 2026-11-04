@@ -197,6 +197,12 @@ func (SegmentV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*segmentV2State)(nil)).Elem()
 }
 
+// SegmentV2Exists checks whether an existing SegmentV2 resource with the given ID exists.
+func SegmentV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SegmentV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/segmentV2:SegmentV2", id, state, "", opts...)
+}
+
 type segmentV2Args struct {
 	// A description for the segment.
 	Description *string `pulumi:"description"`

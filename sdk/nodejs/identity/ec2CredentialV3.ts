@@ -58,6 +58,17 @@ export class Ec2CredentialV3 extends pulumi.CustomResource {
         return new Ec2CredentialV3(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Ec2CredentialV3 resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: Ec2CredentialV3State, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("openstack:identity/ec2CredentialV3:Ec2CredentialV3", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'openstack:identity/ec2CredentialV3:Ec2CredentialV3';
 

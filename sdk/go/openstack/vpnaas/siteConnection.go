@@ -288,6 +288,12 @@ func (SiteConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*siteConnectionState)(nil)).Elem()
 }
 
+// SiteConnectionExists checks whether an existing SiteConnection resource with the given ID exists.
+func SiteConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SiteConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:vpnaas/siteConnection:SiteConnection", id, state, "", opts...)
+}
+
 type siteConnectionArgs struct {
 	// The administrative state of the resource. Can either be up(true) or down(false).
 	// Changing this updates the administrative state of the existing connection.

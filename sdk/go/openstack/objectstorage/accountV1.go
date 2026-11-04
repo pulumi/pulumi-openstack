@@ -157,6 +157,12 @@ func (AccountV1State) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountV1State)(nil)).Elem()
 }
 
+// AccountV1Exists checks whether an existing AccountV1 resource with the given ID exists.
+func AccountV1Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountV1State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:objectstorage/accountV1:AccountV1", id, state, "", opts...)
+}
+
 type accountV1Args struct {
 	// A map of custom key/value pairs to associate with the
 	// account metadata. Changing the `Quota-Bytes` key value is allowed to be

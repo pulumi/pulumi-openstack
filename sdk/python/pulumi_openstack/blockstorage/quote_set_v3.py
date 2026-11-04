@@ -595,6 +595,32 @@ class QuoteSetV3(pulumi.CustomResource):
         __props__.__dict__["volumes"] = volumes
         return QuoteSetV3(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+            backups: pulumi.Input[Optional[_builtins.int]] = None,
+            gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+            groups: pulumi.Input[Optional[_builtins.int]] = None,
+            per_volume_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshots: pulumi.Input[Optional[_builtins.int]] = None,
+            volume_type_quota: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            volumes: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupGigabytes"] = backup_gigabytes
+        __props__["backups"] = backups
+        __props__["gigabytes"] = gigabytes
+        __props__["groups"] = groups
+        __props__["perVolumeGigabytes"] = per_volume_gigabytes
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["snapshots"] = snapshots
+        __props__["volumeTypeQuota"] = volume_type_quota
+        __props__["volumes"] = volumes
+        return pulumi.runtime.exists_resource(None, 'openstack:blockstorage/quoteSetV3:QuoteSetV3', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupGigabytes")
     def backup_gigabytes(self) -> pulumi.Output[_builtins.int]:

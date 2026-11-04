@@ -166,6 +166,12 @@ func (SubnetRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetRouteState)(nil)).Elem()
 }
 
+// SubnetRouteExists checks whether an existing SubnetRoute resource with the given ID exists.
+func SubnetRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubnetRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/subnetRoute:SubnetRoute", id, state, "", opts...)
+}
+
 type subnetRouteArgs struct {
 	// CIDR block to match on the packet’s destination IP. Changing
 	// this creates a new routing entry.

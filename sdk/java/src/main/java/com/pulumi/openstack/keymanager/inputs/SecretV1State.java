@@ -192,14 +192,14 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The secret&#39;s data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
+     * The secret&#39;s data to be stored. **payload&#92;_content&#92;_type** must also be supplied if **payload** is included.
      * 
      */
     @Import(name="payload")
     private @Nullable Output<String> payload;
 
     /**
-     * @return The secret&#39;s data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
+     * @return The secret&#39;s data to be stored. **payload&#92;_content&#92;_type** must also be supplied if **payload** is included.
      * 
      */
     public Optional<Output<String>> payload() {
@@ -599,7 +599,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payload The secret&#39;s data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
+         * @param payload The secret&#39;s data to be stored. **payload&#92;_content&#92;_type** must also be supplied if **payload** is included.
          * 
          * @return builder
          * 
@@ -610,7 +610,7 @@ public final class SecretV1State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payload The secret&#39;s data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
+         * @param payload The secret&#39;s data to be stored. **payload&#92;_content&#92;_type** must also be supplied if **payload** is included.
          * 
          * @return builder
          * 

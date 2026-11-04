@@ -634,6 +634,34 @@ class ShareNetwork(pulumi.CustomResource):
         __props__.__dict__["segmentation_id"] = segmentation_id
         return ShareNetwork(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            neutron_net_id: pulumi.Input[Optional[_builtins.str]] = None,
+            neutron_subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_service_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            segmentation_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cidr"] = cidr
+        __props__["description"] = description
+        __props__["ipVersion"] = ip_version
+        __props__["name"] = name
+        __props__["networkType"] = network_type
+        __props__["neutronNetId"] = neutron_net_id
+        __props__["neutronSubnetId"] = neutron_subnet_id
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["securityServiceIds"] = security_service_ids
+        __props__["segmentationId"] = segmentation_id
+        return pulumi.runtime.exists_resource(None, 'openstack:sharedfilesystem/shareNetwork:ShareNetwork', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def cidr(self) -> pulumi.Output[_builtins.str]:

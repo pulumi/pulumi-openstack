@@ -222,6 +222,12 @@ func (SecGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secGroupState)(nil)).Elem()
 }
 
+// SecGroupExists checks whether an existing SecGroup resource with the given ID exists.
+func SecGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/secGroup:SecGroup", id, state, "", opts...)
+}
+
 type secGroupArgs struct {
 	// Whether or not to delete the default
 	// egress security rules. This is `false` by default. See the below note

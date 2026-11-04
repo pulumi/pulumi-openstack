@@ -767,6 +767,38 @@ class User(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return User(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            extra: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ignore_change_password_upon_first_use: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_lockout_failure_attempts: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_password_expiry: pulumi.Input[Optional[_builtins.bool]] = None,
+            multi_factor_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            multi_factor_auth_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UserMultiFactorAuthRuleArgs', 'UserMultiFactorAuthRuleArgsDict', 'outputs.UserMultiFactorAuthRule']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultProjectId"] = default_project_id
+        __props__["description"] = description
+        __props__["domainId"] = domain_id
+        __props__["enabled"] = enabled
+        __props__["extra"] = extra
+        __props__["ignoreChangePasswordUponFirstUse"] = ignore_change_password_upon_first_use
+        __props__["ignoreLockoutFailureAttempts"] = ignore_lockout_failure_attempts
+        __props__["ignorePasswordExpiry"] = ignore_password_expiry
+        __props__["multiFactorAuthEnabled"] = multi_factor_auth_enabled
+        __props__["multiFactorAuthRules"] = multi_factor_auth_rules
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'openstack:identity/user:User', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultProjectId")
     def default_project_id(self) -> pulumi.Output[_builtins.str]:

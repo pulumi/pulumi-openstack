@@ -44,6 +44,17 @@ export class FloatingIpAssociate extends pulumi.CustomResource {
         return new FloatingIpAssociate(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing FloatingIpAssociate resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: FloatingIpAssociateState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("openstack:networking/floatingIpAssociate:FloatingIpAssociate", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'openstack:networking/floatingIpAssociate:FloatingIpAssociate';
 

@@ -167,6 +167,12 @@ func (RoleAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*roleAssignmentState)(nil)).Elem()
 }
 
+// RoleAssignmentExists checks whether an existing RoleAssignment resource with the given ID exists.
+func RoleAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoleAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/roleAssignment:RoleAssignment", id, state, "", opts...)
+}
+
 type roleAssignmentArgs struct {
 	// The domain to assign the role in.
 	DomainId *string `pulumi:"domainId"`

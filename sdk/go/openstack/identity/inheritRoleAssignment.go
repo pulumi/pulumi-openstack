@@ -168,6 +168,12 @@ func (InheritRoleAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*inheritRoleAssignmentState)(nil)).Elem()
 }
 
+// InheritRoleAssignmentExists checks whether an existing InheritRoleAssignment resource with the given ID exists.
+func InheritRoleAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InheritRoleAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/inheritRoleAssignment:InheritRoleAssignment", id, state, "", opts...)
+}
+
 type inheritRoleAssignmentArgs struct {
 	// The domain to assign the role in.
 	DomainId *string `pulumi:"domainId"`

@@ -341,6 +341,12 @@ func (SubnetPoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*subnetPoolState)(nil)).Elem()
 }
 
+// SubnetPoolExists checks whether an existing SubnetPool resource with the given ID exists.
+func SubnetPoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SubnetPoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/subnetPool:SubnetPool", id, state, "", opts...)
+}
+
 type subnetPoolArgs struct {
 	// The Neutron address scope to assign to the
 	// subnetpool. Changing this updates the address scope id of the existing

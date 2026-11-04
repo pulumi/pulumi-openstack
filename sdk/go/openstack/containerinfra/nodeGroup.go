@@ -255,6 +255,12 @@ func (NodeGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeGroupState)(nil)).Elem()
 }
 
+// NodeGroupExists checks whether an existing NodeGroup resource with the given ID exists.
+func NodeGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:containerinfra/nodeGroup:NodeGroup", id, state, "", opts...)
+}
+
 type nodeGroupArgs struct {
 	// The UUID of the V1 Container Infra cluster.
 	// Changing this creates a new node group.

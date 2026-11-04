@@ -802,6 +802,42 @@ class VolumeAttach(pulumi.CustomResource):
         __props__.__dict__["wwpns"] = wwpns
         return VolumeAttach(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attach_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            device: pulumi.Input[Optional[_builtins.str]] = None,
+            driver_volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            initiator: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_point_base: pulumi.Input[Optional[_builtins.str]] = None,
+            multipath: pulumi.Input[Optional[_builtins.bool]] = None,
+            os_type: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wwnn: pulumi.Input[Optional[_builtins.str]] = None,
+            wwpns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attachMode"] = attach_mode
+        __props__["data"] = data
+        __props__["device"] = device
+        __props__["driverVolumeType"] = driver_volume_type
+        __props__["hostName"] = host_name
+        __props__["initiator"] = initiator
+        __props__["ipAddress"] = ip_address
+        __props__["mountPointBase"] = mount_point_base
+        __props__["multipath"] = multipath
+        __props__["osType"] = os_type
+        __props__["platform"] = platform
+        __props__["region"] = region
+        __props__["volumeId"] = volume_id
+        __props__["wwnn"] = wwnn
+        __props__["wwpns"] = wwpns
+        return pulumi.runtime.exists_resource(None, 'openstack:blockstorage/volumeAttach:VolumeAttach', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="attachMode")
     def attach_mode(self) -> pulumi.Output[Optional[_builtins.str]]:

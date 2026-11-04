@@ -1042,6 +1042,48 @@ class Pool(pulumi.CustomResource):
         __props__.__dict__["tls_versions"] = tls_versions
         return Pool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            lb_method: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            persistence: pulumi.Input[Optional[Union['PoolPersistenceArgs', 'PoolPersistenceArgsDict', 'outputs.PoolPersistence']]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminStateUp"] = admin_state_up
+        __props__["alpnProtocols"] = alpn_protocols
+        __props__["caTlsContainerRef"] = ca_tls_container_ref
+        __props__["crlContainerRef"] = crl_container_ref
+        __props__["description"] = description
+        __props__["lbMethod"] = lb_method
+        __props__["listenerId"] = listener_id
+        __props__["loadbalancerId"] = loadbalancer_id
+        __props__["name"] = name
+        __props__["persistence"] = persistence
+        __props__["protocol"] = protocol
+        __props__["region"] = region
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        __props__["tlsCiphers"] = tls_ciphers
+        __props__["tlsContainerRef"] = tls_container_ref
+        __props__["tlsEnabled"] = tls_enabled
+        __props__["tlsVersions"] = tls_versions
+        return pulumi.runtime.exists_resource(None, 'openstack:loadbalancer/pool:Pool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[_builtins.bool]]:

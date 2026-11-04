@@ -596,6 +596,30 @@ class Trunk(pulumi.CustomResource):
         __props__.__dict__["tenant_id"] = tenant_id
         return Trunk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TrunkSubPortArgs', 'TrunkSubPortArgsDict', 'outputs.TrunkSubPort']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminStateUp"] = admin_state_up
+        __props__["allTags"] = all_tags
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["portId"] = port_id
+        __props__["region"] = region
+        __props__["subPorts"] = sub_ports
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/trunk:Trunk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[_builtins.bool]]:

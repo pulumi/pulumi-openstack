@@ -754,6 +754,36 @@ class L7PolicyV2(pulumi.CustomResource):
         __props__.__dict__["tenant_id"] = tenant_id
         return L7PolicyV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            position: pulumi.Input[Optional[_builtins.int]] = None,
+            redirect_http_code: pulumi.Input[Optional[_builtins.int]] = None,
+            redirect_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["action"] = action
+        __props__["adminStateUp"] = admin_state_up
+        __props__["description"] = description
+        __props__["listenerId"] = listener_id
+        __props__["name"] = name
+        __props__["position"] = position
+        __props__["redirectHttpCode"] = redirect_http_code
+        __props__["redirectPoolId"] = redirect_pool_id
+        __props__["redirectPrefix"] = redirect_prefix
+        __props__["redirectUrl"] = redirect_url
+        __props__["region"] = region
+        __props__["tenantId"] = tenant_id
+        return pulumi.runtime.exists_resource(None, 'openstack:loadbalancer/l7PolicyV2:L7PolicyV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def action(self) -> pulumi.Output[_builtins.str]:

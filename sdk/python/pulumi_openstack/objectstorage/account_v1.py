@@ -397,6 +397,28 @@ class AccountV1(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return AccountV1(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            bytes_used: pulumi.Input[Optional[_builtins.int]] = None,
+            container_count: pulumi.Input[Optional[_builtins.int]] = None,
+            headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            object_count: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            quota_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["bytesUsed"] = bytes_used
+        __props__["containerCount"] = container_count
+        __props__["headers"] = headers
+        __props__["metadata"] = metadata
+        __props__["objectCount"] = object_count
+        __props__["projectId"] = project_id
+        __props__["quotaBytes"] = quota_bytes
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'openstack:objectstorage/accountV1:AccountV1', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="bytesUsed")
     def bytes_used(self) -> pulumi.Output[_builtins.int]:

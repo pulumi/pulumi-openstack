@@ -59,7 +59,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Output<bool?> AdminStateUp { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean that indicates whether that member works as a backup or not. Available 
+        /// Boolean that indicates whether that member works as a backup or not. Available
         /// only for Octavia &gt;= 2.1.
         /// </summary>
         [Output("backup")]
@@ -199,7 +199,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<bool>? AdminStateUp { get; set; }
 
         /// <summary>
-        /// Boolean that indicates whether that member works as a backup or not. Available 
+        /// Boolean that indicates whether that member works as a backup or not. Available
         /// only for Octavia &gt;= 2.1.
         /// </summary>
         [Input("backup")]
@@ -307,7 +307,7 @@ namespace Pulumi.OpenStack.LoadBalancer
         public Input<bool>? AdminStateUp { get; set; }
 
         /// <summary>
-        /// Boolean that indicates whether that member works as a backup or not. Available 
+        /// Boolean that indicates whether that member works as a backup or not. Available
         /// only for Octavia &gt;= 2.1.
         /// </summary>
         [Input("backup")]

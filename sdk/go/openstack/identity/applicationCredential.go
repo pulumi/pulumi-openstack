@@ -304,6 +304,12 @@ func (ApplicationCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationCredentialState)(nil)).Elem()
 }
 
+// ApplicationCredentialExists checks whether an existing ApplicationCredential resource with the given ID exists.
+func ApplicationCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/applicationCredential:ApplicationCredential", id, state, "", opts...)
+}
+
 type applicationCredentialArgs struct {
 	// A collection of one or more access rules, which
 	// this application credential allows to follow. The structure is described

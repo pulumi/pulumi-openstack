@@ -222,7 +222,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.server);
     }
     /**
-     * The security service type - can either be active\_directory,
+     * The security service type - can either be active&#92;_directory,
      * kerberos or ldap.  Changing this updates the existing security service.
      * 
      */
@@ -230,7 +230,7 @@ public class SecurityService extends com.pulumi.resources.CustomResource {
     private Output<String> type;
 
     /**
-     * @return The security service type - can either be active\_directory,
+     * @return The security service type - can either be active&#92;_directory,
      * kerberos or ldap.  Changing this updates the existing security service.
      * 
      */

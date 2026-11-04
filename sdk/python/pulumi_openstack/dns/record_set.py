@@ -622,6 +622,32 @@ class RecordSet(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return RecordSet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_status_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            records: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["disableStatusCheck"] = disable_status_check
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["records"] = records
+        __props__["region"] = region
+        __props__["ttl"] = ttl
+        __props__["type"] = type
+        __props__["valueSpecs"] = value_specs
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'openstack:dns/recordSet:RecordSet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

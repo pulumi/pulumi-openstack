@@ -385,6 +385,22 @@ class BgpvpnRouterAssociateV2(pulumi.CustomResource):
         __props__.__dict__["router_id"] = router_id
         return BgpvpnRouterAssociateV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advertise_extra_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgpvpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advertiseExtraRoutes"] = advertise_extra_routes
+        __props__["bgpvpnId"] = bgpvpn_id
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["routerId"] = router_id
+        return pulumi.runtime.exists_resource(None, 'openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advertiseExtraRoutes")
     def advertise_extra_routes(self) -> pulumi.Output[_builtins.bool]:

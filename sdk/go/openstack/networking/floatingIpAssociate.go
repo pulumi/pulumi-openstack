@@ -142,6 +142,12 @@ func (FloatingIpAssociateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*floatingIpAssociateState)(nil)).Elem()
 }
 
+// FloatingIpAssociateExists checks whether an existing FloatingIpAssociate resource with the given ID exists.
+func FloatingIpAssociateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FloatingIpAssociateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/floatingIpAssociate:FloatingIpAssociate", id, state, "", opts...)
+}
+
 type floatingIpAssociateArgs struct {
 	FixedIp *string `pulumi:"fixedIp"`
 	// IP Address of an existing floating IP.

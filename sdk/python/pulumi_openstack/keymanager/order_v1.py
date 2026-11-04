@@ -507,6 +507,36 @@ class OrderV1(pulumi.CustomResource):
         __props__.__dict__["updated"] = updated
         return OrderV1(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            meta: pulumi.Input[Optional[Union['OrderV1MetaArgs', 'OrderV1MetaArgsDict', 'outputs.OrderV1Meta']]] = None,
+            order_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["containerRef"] = container_ref
+        __props__["created"] = created
+        __props__["creatorId"] = creator_id
+        __props__["meta"] = meta
+        __props__["orderRef"] = order_ref
+        __props__["region"] = region
+        __props__["secretRef"] = secret_ref
+        __props__["status"] = status
+        __props__["subStatus"] = sub_status
+        __props__["subStatusMessage"] = sub_status_message
+        __props__["type"] = type
+        __props__["updated"] = updated
+        return pulumi.runtime.exists_resource(None, 'openstack:keymanager/orderV1:OrderV1', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="containerRef")
     def container_ref(self) -> pulumi.Output[_builtins.str]:

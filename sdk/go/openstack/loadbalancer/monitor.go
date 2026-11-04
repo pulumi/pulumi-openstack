@@ -278,6 +278,12 @@ func (MonitorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorState)(nil)).Elem()
 }
 
+// MonitorExists checks whether an existing Monitor resource with the given ID exists.
+func MonitorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:loadbalancer/monitor:Monitor", id, state, "", opts...)
+}
+
 type monitorArgs struct {
 	// The administrative state of the monitor.
 	// A valid value is true (UP) or false (DOWN).

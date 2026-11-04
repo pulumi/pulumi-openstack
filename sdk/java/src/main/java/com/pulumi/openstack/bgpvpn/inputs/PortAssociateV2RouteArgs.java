@@ -35,7 +35,7 @@ public final class PortAssociateV2RouteArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The BGP LOCAL\_PREF value of the routes that will
+     * The BGP LOCAL&#92;_PREF value of the routes that will
      * be advertised.
      * 
      */
@@ -43,7 +43,7 @@ public final class PortAssociateV2RouteArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<Integer> localPref;
 
     /**
-     * @return The BGP LOCAL\_PREF value of the routes that will
+     * @return The BGP LOCAL&#92;_PREF value of the routes that will
      * be advertised.
      * 
      */
@@ -138,7 +138,7 @@ public final class PortAssociateV2RouteArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param localPref The BGP LOCAL\_PREF value of the routes that will
+         * @param localPref The BGP LOCAL&#92;_PREF value of the routes that will
          * be advertised.
          * 
          * @return builder
@@ -150,7 +150,7 @@ public final class PortAssociateV2RouteArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param localPref The BGP LOCAL\_PREF value of the routes that will
+         * @param localPref The BGP LOCAL&#92;_PREF value of the routes that will
          * be advertised.
          * 
          * @return builder

@@ -1035,6 +1035,46 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["value_specs"] = value_specs
         return Network(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            external: pulumi.Input[Optional[_builtins.bool]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            segments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkSegmentArgs', 'NetworkSegmentArgsDict', 'outputs.NetworkSegment']]]]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transparent_vlan: pulumi.Input[Optional[_builtins.bool]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminStateUp"] = admin_state_up
+        __props__["allTags"] = all_tags
+        __props__["availabilityZoneHints"] = availability_zone_hints
+        __props__["description"] = description
+        __props__["dnsDomain"] = dns_domain
+        __props__["external"] = external
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["portSecurityEnabled"] = port_security_enabled
+        __props__["qosPolicyId"] = qos_policy_id
+        __props__["region"] = region
+        __props__["segments"] = segments
+        __props__["shared"] = shared
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        __props__["transparentVlan"] = transparent_vlan
+        __props__["valueSpecs"] = value_specs
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/network:Network', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[_builtins.bool]:

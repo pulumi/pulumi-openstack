@@ -169,6 +169,12 @@ func (EndpointV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointV3State)(nil)).Elem()
 }
 
+// EndpointV3Exists checks whether an existing EndpointV3 resource with the given ID exists.
+func EndpointV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EndpointV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/endpointV3:EndpointV3", id, state, "", opts...)
+}
+
 type endpointV3Args struct {
 	// The endpoint region. The `region` and
 	// `endpointRegion` can be different.

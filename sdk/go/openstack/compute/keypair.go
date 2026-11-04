@@ -201,6 +201,12 @@ func (KeypairState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keypairState)(nil)).Elem()
 }
 
+// KeypairExists checks whether an existing Keypair resource with the given ID exists.
+func KeypairExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeypairState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:compute/keypair:Keypair", id, state, "", opts...)
+}
+
 type keypairArgs struct {
 	// A unique name for the keypair. Changing this creates a new
 	// keypair.

@@ -634,6 +634,34 @@ class QuotaV2(pulumi.CustomResource):
         __props__.__dict__["subnetpool"] = subnetpool
         return QuotaV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            floatingip: pulumi.Input[Optional[_builtins.int]] = None,
+            network: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rbac_policy: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group_rule: pulumi.Input[Optional[_builtins.int]] = None,
+            subnet: pulumi.Input[Optional[_builtins.int]] = None,
+            subnetpool: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["floatingip"] = floatingip
+        __props__["network"] = network
+        __props__["port"] = port
+        __props__["projectId"] = project_id
+        __props__["rbacPolicy"] = rbac_policy
+        __props__["region"] = region
+        __props__["router"] = router
+        __props__["securityGroup"] = security_group
+        __props__["securityGroupRule"] = security_group_rule
+        __props__["subnet"] = subnet
+        __props__["subnetpool"] = subnetpool
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/quotaV2:QuotaV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def floatingip(self) -> pulumi.Output[_builtins.int]:

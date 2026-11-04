@@ -18,16 +18,16 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
     public static final L7PolicyV2State Empty = new L7PolicyV2State();
 
     /**
-     * The L7 Policy action - can either be REDIRECT\_TO\_POOL,
-     * REDIRECT\_TO\_URL or REJECT.
+     * The L7 Policy action - can either be REDIRECT&#92;_TO&#92;_POOL,
+     * REDIRECT&#92;_TO&#92;_URL or REJECT.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return The L7 Policy action - can either be REDIRECT\_TO\_POOL,
-     * REDIRECT\_TO\_URL or REJECT.
+     * @return The L7 Policy action - can either be REDIRECT&#92;_TO&#92;_POOL,
+     * REDIRECT&#92;_TO&#92;_URL or REJECT.
      * 
      */
     public Optional<Output<String>> action() {
@@ -116,9 +116,9 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Integer. Requests matching this policy will be\
+     * Integer. Requests matching this policy will be&#92;
      * redirected to the specified URL or Prefix URL with the HTTP response code.
-     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * Valid if action is REDIRECT&#92;_TO&#92;_URL or REDIRECT&#92;_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
      * 
      */
@@ -126,9 +126,9 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> redirectHttpCode;
 
     /**
-     * @return Integer. Requests matching this policy will be\
+     * @return Integer. Requests matching this policy will be&#92;
      * redirected to the specified URL or Prefix URL with the HTTP response code.
-     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * Valid if action is REDIRECT&#92;_TO&#92;_URL or REDIRECT&#92;_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
      * 
      */
@@ -138,7 +138,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Requests matching this policy will be redirected to the
-     * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
+     * pool with this ID. Only valid if action is REDIRECT&#92;_TO&#92;_POOL.
      * 
      */
     @Import(name="redirectPoolId")
@@ -146,7 +146,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Requests matching this policy will be redirected to the
-     * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
+     * pool with this ID. Only valid if action is REDIRECT&#92;_TO&#92;_POOL.
      * 
      */
     public Optional<Output<String>> redirectPoolId() {
@@ -155,7 +155,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Requests matching this policy will be redirected to
-     * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+     * this Prefix URL. Only valid if action is REDIRECT&#92;_PREFIX.
      * 
      */
     @Import(name="redirectPrefix")
@@ -163,7 +163,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Requests matching this policy will be redirected to
-     * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+     * this Prefix URL. Only valid if action is REDIRECT&#92;_PREFIX.
      * 
      */
     public Optional<Output<String>> redirectPrefix() {
@@ -172,7 +172,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Requests matching this policy will be redirected to this URL.
-     * Only valid if action is REDIRECT\_TO\_URL.
+     * Only valid if action is REDIRECT&#92;_TO&#92;_URL.
      * 
      */
     @Import(name="redirectUrl")
@@ -180,7 +180,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Requests matching this policy will be redirected to this URL.
-     * Only valid if action is REDIRECT\_TO\_URL.
+     * Only valid if action is REDIRECT&#92;_TO&#92;_URL.
      * 
      */
     public Optional<Output<String>> redirectUrl() {
@@ -263,8 +263,8 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The L7 Policy action - can either be REDIRECT\_TO\_POOL,
-         * REDIRECT\_TO\_URL or REJECT.
+         * @param action The L7 Policy action - can either be REDIRECT&#92;_TO&#92;_POOL,
+         * REDIRECT&#92;_TO&#92;_URL or REJECT.
          * 
          * @return builder
          * 
@@ -275,8 +275,8 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The L7 Policy action - can either be REDIRECT\_TO\_POOL,
-         * REDIRECT\_TO\_URL or REJECT.
+         * @param action The L7 Policy action - can either be REDIRECT&#92;_TO&#92;_POOL,
+         * REDIRECT&#92;_TO&#92;_URL or REJECT.
          * 
          * @return builder
          * 
@@ -397,9 +397,9 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirectHttpCode Integer. Requests matching this policy will be\
+         * @param redirectHttpCode Integer. Requests matching this policy will be&#92;
          * redirected to the specified URL or Prefix URL with the HTTP response code.
-         * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+         * Valid if action is REDIRECT&#92;_TO&#92;_URL or REDIRECT&#92;_PREFIX. Valid options are:
          * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
          * 
          * @return builder
@@ -411,9 +411,9 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirectHttpCode Integer. Requests matching this policy will be\
+         * @param redirectHttpCode Integer. Requests matching this policy will be&#92;
          * redirected to the specified URL or Prefix URL with the HTTP response code.
-         * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+         * Valid if action is REDIRECT&#92;_TO&#92;_URL or REDIRECT&#92;_PREFIX. Valid options are:
          * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
          * 
          * @return builder
@@ -425,7 +425,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param redirectPoolId Requests matching this policy will be redirected to the
-         * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
+         * pool with this ID. Only valid if action is REDIRECT&#92;_TO&#92;_POOL.
          * 
          * @return builder
          * 
@@ -437,7 +437,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param redirectPoolId Requests matching this policy will be redirected to the
-         * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
+         * pool with this ID. Only valid if action is REDIRECT&#92;_TO&#92;_POOL.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param redirectPrefix Requests matching this policy will be redirected to
-         * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+         * this Prefix URL. Only valid if action is REDIRECT&#92;_PREFIX.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param redirectPrefix Requests matching this policy will be redirected to
-         * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+         * this Prefix URL. Only valid if action is REDIRECT&#92;_PREFIX.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param redirectUrl Requests matching this policy will be redirected to this URL.
-         * Only valid if action is REDIRECT\_TO\_URL.
+         * Only valid if action is REDIRECT&#92;_TO&#92;_URL.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class L7PolicyV2State extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param redirectUrl Requests matching this policy will be redirected to this URL.
-         * Only valid if action is REDIRECT\_TO\_URL.
+         * Only valid if action is REDIRECT&#92;_TO&#92;_URL.
          * 
          * @return builder
          * 
