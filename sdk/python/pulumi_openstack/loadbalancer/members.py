@@ -318,6 +318,18 @@ class Members(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return Members(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MembersMemberArgs', 'MembersMemberArgsDict', 'outputs.MembersMember']]]]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["members"] = members
+        __props__["poolId"] = pool_id
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'openstack:loadbalancer/members:Members', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def members(self) -> pulumi.Output[Optional[Sequence['outputs.MembersMember']]]:

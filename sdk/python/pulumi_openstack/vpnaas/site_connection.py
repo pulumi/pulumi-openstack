@@ -1017,6 +1017,50 @@ class SiteConnection(pulumi.CustomResource):
         __props__.__dict__["vpnservice_id"] = vpnservice_id
         return SiteConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dpds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SiteConnectionDpdArgs', 'SiteConnectionDpdArgsDict', 'outputs.SiteConnectionDpd']]]]] = None,
+            ikepolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            initiator: pulumi.Input[Optional[_builtins.str]] = None,
+            ipsecpolicy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            local_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_address: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peer_ep_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            psk: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpnservice_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminStateUp"] = admin_state_up
+        __props__["description"] = description
+        __props__["dpds"] = dpds
+        __props__["ikepolicyId"] = ikepolicy_id
+        __props__["initiator"] = initiator
+        __props__["ipsecpolicyId"] = ipsecpolicy_id
+        __props__["localEpGroupId"] = local_ep_group_id
+        __props__["localId"] = local_id
+        __props__["mtu"] = mtu
+        __props__["name"] = name
+        __props__["peerAddress"] = peer_address
+        __props__["peerCidrs"] = peer_cidrs
+        __props__["peerEpGroupId"] = peer_ep_group_id
+        __props__["peerId"] = peer_id
+        __props__["psk"] = psk
+        __props__["region"] = region
+        __props__["tenantId"] = tenant_id
+        __props__["valueSpecs"] = value_specs
+        __props__["vpnserviceId"] = vpnservice_id
+        return pulumi.runtime.exists_resource(None, 'openstack:vpnaas/siteConnection:SiteConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[_builtins.bool]]:

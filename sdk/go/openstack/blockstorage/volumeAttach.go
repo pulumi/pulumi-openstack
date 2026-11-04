@@ -262,6 +262,12 @@ func (VolumeAttachState) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeAttachState)(nil)).Elem()
 }
 
+// VolumeAttachExists checks whether an existing VolumeAttach resource with the given ID exists.
+func VolumeAttachExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeAttachState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:blockstorage/volumeAttach:VolumeAttach", id, state, "", opts...)
+}
+
 type volumeAttachArgs struct {
 	// Specify whether to attach the volume as Read-Only
 	// (`ro`) or Read-Write (`rw`). Only values of `ro` and `rw` are accepted.

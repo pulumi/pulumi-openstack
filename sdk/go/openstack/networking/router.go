@@ -278,6 +278,12 @@ func (RouterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerState)(nil)).Elem()
 }
 
+// RouterExists checks whether an existing Router resource with the given ID exists.
+func RouterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/router:Router", id, state, "", opts...)
+}
+
 type routerArgs struct {
 	// Administrative up/down status for the router
 	// (must be "true" or "false" if provided). Changing this updates the

@@ -218,6 +218,12 @@ func (FlavorState) ElementType() reflect.Type {
 	return reflect.TypeOf((*flavorState)(nil)).Elem()
 }
 
+// FlavorExists checks whether an existing Flavor resource with the given ID exists.
+func FlavorExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FlavorState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:compute/flavor:Flavor", id, state, "", opts...)
+}
+
 type flavorArgs struct {
 	// The description of the flavor. Changing this
 	// updates the description of the flavor. Requires microversion >= 2.55.

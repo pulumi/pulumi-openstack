@@ -207,6 +207,12 @@ func (RecordSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordSetState)(nil)).Elem()
 }
 
+// RecordSetExists checks whether an existing RecordSet resource with the given ID exists.
+func RecordSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RecordSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:dns/recordSet:RecordSet", id, state, "", opts...)
+}
+
 type recordSetArgs struct {
 	// A description of the  record set.
 	Description *string `pulumi:"description"`

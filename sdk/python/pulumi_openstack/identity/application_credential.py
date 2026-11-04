@@ -710,6 +710,30 @@ class ApplicationCredential(pulumi.CustomResource):
         __props__.__dict__["unrestricted"] = unrestricted
         return ApplicationCredential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationCredentialAccessRuleArgs', 'ApplicationCredentialAccessRuleArgsDict', 'outputs.ApplicationCredentialAccessRule']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            unrestricted: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessRules"] = access_rules
+        __props__["description"] = description
+        __props__["expiresAt"] = expires_at
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["roles"] = roles
+        __props__["secret"] = secret
+        __props__["unrestricted"] = unrestricted
+        return pulumi.runtime.exists_resource(None, 'openstack:identity/applicationCredential:ApplicationCredential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessRules")
     def access_rules(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationCredentialAccessRule']]]:

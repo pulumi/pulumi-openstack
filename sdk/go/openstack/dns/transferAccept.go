@@ -162,6 +162,12 @@ func (TransferAcceptState) ElementType() reflect.Type {
 	return reflect.TypeOf((*transferAcceptState)(nil)).Elem()
 }
 
+// TransferAcceptExists checks whether an existing TransferAccept resource with the given ID exists.
+func TransferAcceptExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TransferAcceptState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:dns/transferAccept:TransferAccept", id, state, "", opts...)
+}
+
 type transferAcceptArgs struct {
 	// Disable wait for zone to reach ACTIVE
 	// status. The check is enabled by default. If this argument is true, zone

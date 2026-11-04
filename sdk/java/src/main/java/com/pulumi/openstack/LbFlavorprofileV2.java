@@ -77,20 +77,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var flavorprofile1 = new FlavorprofileV2("flavorprofile1", FlavorprofileV2Args.builder()
  *             .name("amphora-single-profile")
  *             .providerName("amphora")
- *             .flavorData("{\"loadbalancer_topology\": \"SINGLE\"}")
+ *             .flavorData("}{&#92;{@code "loadbalancer_topology}&#92;{@code ": }&#92;{@code "SINGLE}&#92;{@code "}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 
@@ -101,11 +101,10 @@ import javax.annotation.Nullable;
  * $ pulumi import openstack:index/lbFlavorprofileV2:LbFlavorprofileV2 flavorprofile_1 2a0f2240-c5e6-41de-896d-e80d97428d6b
  * ```
  * 
- * @deprecated
- * openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2
+ * @deprecated openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2
  * 
  */
-@Deprecated /* openstack.index/lbflavorprofilev2.LbFlavorprofileV2 has been deprecated in favor of openstack.loadbalancer/flavorprofilev2.FlavorprofileV2 */
+@Deprecated
 @ResourceType(type="openstack:index/lbFlavorprofileV2:LbFlavorprofileV2")
 public class LbFlavorprofileV2 extends com.pulumi.resources.CustomResource {
     /**

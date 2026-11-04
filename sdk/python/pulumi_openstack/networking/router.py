@@ -930,6 +930,44 @@ class Router(pulumi.CustomResource):
         __props__.__dict__["vendor_options"] = vendor_options
         return Router(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            availability_zone_hints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            distributed: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_snat: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_fixed_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterExternalFixedIpArgs', 'RouterExternalFixedIpArgsDict', 'outputs.RouterExternalFixedIp']]]]] = None,
+            external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            external_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            external_subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vendor_options: pulumi.Input[Optional[Union['RouterVendorOptionsArgs', 'RouterVendorOptionsArgsDict', 'outputs.RouterVendorOptions']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminStateUp"] = admin_state_up
+        __props__["allTags"] = all_tags
+        __props__["availabilityZoneHints"] = availability_zone_hints
+        __props__["description"] = description
+        __props__["distributed"] = distributed
+        __props__["enableSnat"] = enable_snat
+        __props__["externalFixedIps"] = external_fixed_ips
+        __props__["externalNetworkId"] = external_network_id
+        __props__["externalQosPolicyId"] = external_qos_policy_id
+        __props__["externalSubnetIds"] = external_subnet_ids
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        __props__["valueSpecs"] = value_specs
+        __props__["vendorOptions"] = vendor_options
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/router:Router', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[_builtins.bool]:

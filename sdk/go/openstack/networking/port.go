@@ -484,6 +484,12 @@ func (PortState) ElementType() reflect.Type {
 	return reflect.TypeOf((*portState)(nil)).Elem()
 }
 
+// PortExists checks whether an existing Port resource with the given ID exists.
+func PortExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PortState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/port:Port", id, state, "", opts...)
+}
+
 type portArgs struct {
 	// Administrative up/down status for the port
 	// (must be `true` or `false` if provided). Changing this updates the

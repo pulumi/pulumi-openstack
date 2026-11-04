@@ -475,6 +475,26 @@ class Keypair(pulumi.CustomResource):
         __props__.__dict__["value_specs"] = value_specs
         return Keypair(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["fingerprint"] = fingerprint
+        __props__["name"] = name
+        __props__["privateKey"] = private_key
+        __props__["publicKey"] = public_key
+        __props__["region"] = region
+        __props__["userId"] = user_id
+        __props__["valueSpecs"] = value_specs
+        return pulumi.runtime.exists_resource(None, 'openstack:compute/keypair:Keypair', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[_builtins.str]:

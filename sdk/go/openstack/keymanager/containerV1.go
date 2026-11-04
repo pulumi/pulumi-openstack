@@ -298,6 +298,12 @@ func (ContainerV1State) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerV1State)(nil)).Elem()
 }
 
+// ContainerV1Exists checks whether an existing ContainerV1 resource with the given ID exists.
+func ContainerV1Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContainerV1State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:keymanager/containerV1:ContainerV1", id, state, "", opts...)
+}
+
 type containerV1Args struct {
 	// Allows to control an access to a container. Currently only
 	// the `read` operation is supported. If not specified, the container is

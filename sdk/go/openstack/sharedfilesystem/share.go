@@ -283,6 +283,12 @@ func (ShareState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareState)(nil)).Elem()
 }
 
+// ShareExists checks whether an existing Share resource with the given ID exists.
+func ShareExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShareState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:sharedfilesystem/share:Share", id, state, "", opts...)
+}
+
 type shareArgs struct {
 	// The share availability zone. Changing this creates a
 	// new share.

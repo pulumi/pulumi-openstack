@@ -165,6 +165,12 @@ func (UserMembershipV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*userMembershipV3State)(nil)).Elem()
 }
 
+// UserMembershipV3Exists checks whether an existing UserMembershipV3 resource with the given ID exists.
+func UserMembershipV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserMembershipV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/userMembershipV3:UserMembershipV3", id, state, "", opts...)
+}
+
 type userMembershipV3Args struct {
 	// The UUID of group to which the user will be added.
 	// Changing this creates a new user membership.

@@ -221,6 +221,12 @@ func (QuotaSetV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaSetV2State)(nil)).Elem()
 }
 
+// QuotaSetV2Exists checks whether an existing QuotaSetV2 resource with the given ID exists.
+func QuotaSetV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuotaSetV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:compute/quotaSetV2:QuotaSetV2", id, state, "", opts...)
+}
+
 type quotaSetV2Args struct {
 	// Quota value for cores.
 	// Changing this updates the existing quotaset.

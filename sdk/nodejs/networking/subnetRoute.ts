@@ -55,6 +55,17 @@ export class SubnetRoute extends pulumi.CustomResource {
         return new SubnetRoute(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing SubnetRoute resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: SubnetRouteState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("openstack:networking/subnetRoute:SubnetRoute", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'openstack:networking/subnetRoute:SubnetRoute';
 

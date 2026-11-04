@@ -229,6 +229,12 @@ func (PolicyV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyV2State)(nil)).Elem()
 }
 
+// PolicyV2Exists checks whether an existing PolicyV2 resource with the given ID exists.
+func PolicyV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PolicyV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:firewall/policyV2:PolicyV2", id, state, "", opts...)
+}
+
 type policyV2Args struct {
 	// Audit status of the firewall policy
 	// (must be "true" or "false" if provided - defaults to "false").

@@ -653,6 +653,32 @@ class L7RuleV2(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return L7RuleV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            compare_type: pulumi.Input[Optional[_builtins.str]] = None,
+            invert: pulumi.Input[Optional[_builtins.bool]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            l7policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminStateUp"] = admin_state_up
+        __props__["compareType"] = compare_type
+        __props__["invert"] = invert
+        __props__["key"] = key
+        __props__["l7policyId"] = l7policy_id
+        __props__["listenerId"] = listener_id
+        __props__["region"] = region
+        __props__["tenantId"] = tenant_id
+        __props__["type"] = type
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'openstack:loadbalancer/l7RuleV2:L7RuleV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[_builtins.bool]]:

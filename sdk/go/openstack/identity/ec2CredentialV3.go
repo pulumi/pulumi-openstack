@@ -186,6 +186,12 @@ func (Ec2CredentialV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*ec2CredentialV3State)(nil)).Elem()
 }
 
+// Ec2CredentialV3Exists checks whether an existing Ec2CredentialV3 resource with the given ID exists.
+func Ec2CredentialV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Ec2CredentialV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/ec2CredentialV3:Ec2CredentialV3", id, state, "", opts...)
+}
+
 type ec2CredentialV3Args struct {
 	// The ID of the project the EC2 credential is created
 	// for and that authentication requests using this EC2 credential will

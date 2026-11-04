@@ -644,6 +644,34 @@ class ContainerV1(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return ContainerV1(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[Union['ContainerV1AclArgs', 'ContainerV1AclArgsDict', 'outputs.ContainerV1Acl']]] = None,
+            consumers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1ConsumerArgs', 'ContainerV1ConsumerArgsDict', 'outputs.ContainerV1Consumer']]]]] = None,
+            container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_refs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerV1SecretRefArgs', 'ContainerV1SecretRefArgsDict', 'outputs.ContainerV1SecretRef']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["consumers"] = consumers
+        __props__["containerRef"] = container_ref
+        __props__["createdAt"] = created_at
+        __props__["creatorId"] = creator_id
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["secretRefs"] = secret_refs
+        __props__["status"] = status
+        __props__["type"] = type
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'openstack:keymanager/containerV1:ContainerV1', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output['outputs.ContainerV1Acl']:

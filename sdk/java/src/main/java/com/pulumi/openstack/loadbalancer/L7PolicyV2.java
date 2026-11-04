@@ -110,16 +110,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="openstack:loadbalancer/l7PolicyV2:L7PolicyV2")
 public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
     /**
-     * The L7 Policy action - can either be REDIRECT\_TO\_POOL,
-     * REDIRECT\_TO\_URL or REJECT.
+     * The L7 Policy action - can either be REDIRECT&#92;_TO&#92;_POOL,
+     * REDIRECT&#92;_TO&#92;_URL or REJECT.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return The L7 Policy action - can either be REDIRECT\_TO\_POOL,
-     * REDIRECT\_TO\_URL or REJECT.
+     * @return The L7 Policy action - can either be REDIRECT&#92;_TO&#92;_POOL,
+     * REDIRECT&#92;_TO&#92;_URL or REJECT.
      * 
      */
     public Output<String> action() {
@@ -202,9 +202,9 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
         return this.position;
     }
     /**
-     * Integer. Requests matching this policy will be\
+     * Integer. Requests matching this policy will be&#92;
      * redirected to the specified URL or Prefix URL with the HTTP response code.
-     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * Valid if action is REDIRECT&#92;_TO&#92;_URL or REDIRECT&#92;_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
      * 
      */
@@ -212,9 +212,9 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
     private Output<Integer> redirectHttpCode;
 
     /**
-     * @return Integer. Requests matching this policy will be\
+     * @return Integer. Requests matching this policy will be&#92;
      * redirected to the specified URL or Prefix URL with the HTTP response code.
-     * Valid if action is REDIRECT\_TO\_URL or REDIRECT\_PREFIX. Valid options are:
+     * Valid if action is REDIRECT&#92;_TO&#92;_URL or REDIRECT&#92;_PREFIX. Valid options are:
      * 301, 302, 303, 307, or 308. Default is 302. New in octavia version 2.9
      * 
      */
@@ -223,7 +223,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * Requests matching this policy will be redirected to the
-     * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
+     * pool with this ID. Only valid if action is REDIRECT&#92;_TO&#92;_POOL.
      * 
      */
     @Export(name="redirectPoolId", refs={String.class}, tree="[0]")
@@ -231,7 +231,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Requests matching this policy will be redirected to the
-     * pool with this ID. Only valid if action is REDIRECT\_TO\_POOL.
+     * pool with this ID. Only valid if action is REDIRECT&#92;_TO&#92;_POOL.
      * 
      */
     public Output<Optional<String>> redirectPoolId() {
@@ -239,7 +239,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * Requests matching this policy will be redirected to
-     * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+     * this Prefix URL. Only valid if action is REDIRECT&#92;_PREFIX.
      * 
      */
     @Export(name="redirectPrefix", refs={String.class}, tree="[0]")
@@ -247,7 +247,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Requests matching this policy will be redirected to
-     * this Prefix URL. Only valid if action is REDIRECT\_PREFIX.
+     * this Prefix URL. Only valid if action is REDIRECT&#92;_PREFIX.
      * 
      */
     public Output<Optional<String>> redirectPrefix() {
@@ -255,7 +255,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * Requests matching this policy will be redirected to this URL.
-     * Only valid if action is REDIRECT\_TO\_URL.
+     * Only valid if action is REDIRECT&#92;_TO&#92;_URL.
      * 
      */
     @Export(name="redirectUrl", refs={String.class}, tree="[0]")
@@ -263,7 +263,7 @@ public class L7PolicyV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Requests matching this policy will be redirected to this URL.
-     * Only valid if action is REDIRECT\_TO\_URL.
+     * Only valid if action is REDIRECT&#92;_TO&#92;_URL.
      * 
      */
     public Output<Optional<String>> redirectUrl() {

@@ -927,6 +927,46 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["volume_type"] = volume_type
         return Volume(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            attachments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeAttachmentArgs', 'VolumeAttachmentArgsDict', 'outputs.VolumeAttachment']]]]] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_id: pulumi.Input[Optional[_builtins.str]] = None,
+            consistency_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_online_resize: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VolumeSchedulerHintArgs', 'VolumeSchedulerHintArgsDict', 'outputs.VolumeSchedulerHint']]]]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_replica: pulumi.Input[Optional[_builtins.str]] = None,
+            source_vol_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_retype_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["attachments"] = attachments
+        __props__["availabilityZone"] = availability_zone
+        __props__["backupId"] = backup_id
+        __props__["consistencyGroupId"] = consistency_group_id
+        __props__["description"] = description
+        __props__["enableOnlineResize"] = enable_online_resize
+        __props__["imageId"] = image_id
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["schedulerHints"] = scheduler_hints
+        __props__["size"] = size
+        __props__["snapshotId"] = snapshot_id
+        __props__["sourceReplica"] = source_replica
+        __props__["sourceVolId"] = source_vol_id
+        __props__["volumeRetypePolicy"] = volume_retype_policy
+        __props__["volumeType"] = volume_type
+        return pulumi.runtime.exists_resource(None, 'openstack:blockstorage/volume:Volume', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def attachments(self) -> pulumi.Output[Sequence['outputs.VolumeAttachment']]:

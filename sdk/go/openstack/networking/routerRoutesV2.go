@@ -175,6 +175,12 @@ func (RouterRoutesV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerRoutesV2State)(nil)).Elem()
 }
 
+// RouterRoutesV2Exists checks whether an existing RouterRoutesV2 resource with the given ID exists.
+func RouterRoutesV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterRoutesV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/routerRoutesV2:RouterRoutesV2", id, state, "", opts...)
+}
+
 type routerRoutesV2Args struct {
 	// The region in which to obtain the V2 networking client.
 	// A networking client is needed to configure routing entres on a router. If

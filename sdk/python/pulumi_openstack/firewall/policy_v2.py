@@ -620,6 +620,28 @@ class PolicyV2(pulumi.CustomResource):
         __props__.__dict__["tenant_id"] = tenant_id
         return PolicyV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            audited: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["audited"] = audited
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["rules"] = rules
+        __props__["shared"] = shared
+        __props__["tenantId"] = tenant_id
+        return pulumi.runtime.exists_resource(None, 'openstack:firewall/policyV2:PolicyV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def audited(self) -> pulumi.Output[Optional[_builtins.bool]]:

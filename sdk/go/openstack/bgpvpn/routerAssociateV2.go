@@ -153,6 +153,12 @@ func (RouterAssociateV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerAssociateV2State)(nil)).Elem()
 }
 
+// RouterAssociateV2Exists checks whether an existing RouterAssociateV2 resource with the given ID exists.
+func RouterAssociateV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterAssociateV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:bgpvpn/routerAssociateV2:RouterAssociateV2", id, state, "", opts...)
+}
+
 type routerAssociateV2Args struct {
 	// A boolean flag indicating whether extra
 	// routes should be advertised. Defaults to true.

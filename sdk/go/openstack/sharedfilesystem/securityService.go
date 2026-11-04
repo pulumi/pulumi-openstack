@@ -213,6 +213,12 @@ func (SecurityServiceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityServiceState)(nil)).Elem()
 }
 
+// SecurityServiceExists checks whether an existing SecurityService resource with the given ID exists.
+func SecurityServiceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityServiceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:sharedfilesystem/securityService:SecurityService", id, state, "", opts...)
+}
+
 type securityServiceArgs struct {
 	// The human-readable description for the security service.
 	// Changing this updates the description of the existing security service.

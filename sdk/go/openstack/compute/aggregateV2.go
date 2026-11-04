@@ -181,6 +181,12 @@ func (AggregateV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*aggregateV2State)(nil)).Elem()
 }
 
+// AggregateV2Exists checks whether an existing AggregateV2 resource with the given ID exists.
+func AggregateV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AggregateV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:compute/aggregateV2:AggregateV2", id, state, "", opts...)
+}
+
 type aggregateV2Args struct {
 	// The list of hosts contained in the Host Aggregate. The hosts must be added
 	// to Openstack and visible in the web interface, or the provider will fail to add them to the host

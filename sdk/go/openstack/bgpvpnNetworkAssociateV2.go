@@ -140,6 +140,12 @@ func (BgpvpnNetworkAssociateV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpvpnNetworkAssociateV2State)(nil)).Elem()
 }
 
+// BgpvpnNetworkAssociateV2Exists checks whether an existing BgpvpnNetworkAssociateV2 resource with the given ID exists.
+func BgpvpnNetworkAssociateV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpvpnNetworkAssociateV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:index/bgpvpnNetworkAssociateV2:BgpvpnNetworkAssociateV2", id, state, "", opts...)
+}
+
 type bgpvpnNetworkAssociateV2Args struct {
 	// The ID of the BGP VPN to which the network will be
 	// associated. Changing this creates a new BGP VPN network association

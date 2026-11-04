@@ -64,11 +64,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * @deprecated
- * openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2
+ * @deprecated openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2
  * 
  */
-@Deprecated /* openstack.index/bgpvpnportassociatev2.BgpvpnPortAssociateV2 has been deprecated in favor of openstack.bgpvpn/portassociatev2.PortAssociateV2 */
+@Deprecated
 @ResourceType(type="openstack:index/bgpvpnPortAssociateV2:BgpvpnPortAssociateV2")
 public class BgpvpnPortAssociateV2 extends com.pulumi.resources.CustomResource {
     /**

@@ -51,11 +51,10 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * @deprecated
- * openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2
+ * @deprecated openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2
  * 
  */
-@Deprecated /* openstack.index/bgpvpnrouterassociatev2.BgpvpnRouterAssociateV2 has been deprecated in favor of openstack.bgpvpn/routerassociatev2.RouterAssociateV2 */
+@Deprecated
 @ResourceType(type="openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2")
 public class BgpvpnRouterAssociateV2 extends com.pulumi.resources.CustomResource {
     /**

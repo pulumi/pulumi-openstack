@@ -263,6 +263,12 @@ func (LbLoadbalancerV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*lbLoadbalancerV2State)(nil)).Elem()
 }
 
+// LbLoadbalancerV2Exists checks whether an existing LbLoadbalancerV2 resource with the given ID exists.
+func LbLoadbalancerV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LbLoadbalancerV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:index/lbLoadbalancerV2:LbLoadbalancerV2", id, state, "", opts...)
+}
+
 type lbLoadbalancerV2Args struct {
 	// The administrative state of the Loadbalancer.
 	// A valid value is true (UP) or false (DOWN).

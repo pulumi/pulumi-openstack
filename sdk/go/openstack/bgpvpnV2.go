@@ -219,6 +219,12 @@ func (BgpvpnV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpvpnV2State)(nil)).Elem()
 }
 
+// BgpvpnV2Exists checks whether an existing BgpvpnV2 resource with the given ID exists.
+func BgpvpnV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpvpnV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:index/bgpvpnV2:BgpvpnV2", id, state, "", opts...)
+}
+
 type bgpvpnV2Args struct {
 	// A list of additional Route Targets that will be
 	// used for export.

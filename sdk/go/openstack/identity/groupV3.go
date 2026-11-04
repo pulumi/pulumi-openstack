@@ -124,6 +124,12 @@ func (GroupV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupV3State)(nil)).Elem()
 }
 
+// GroupV3Exists checks whether an existing GroupV3 resource with the given ID exists.
+func GroupV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/groupV3:GroupV3", id, state, "", opts...)
+}
+
 type groupV3Args struct {
 	// A description of the group.
 	Description *string `pulumi:"description"`

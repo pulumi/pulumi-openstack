@@ -381,6 +381,20 @@ class RouterRoute(pulumi.CustomResource):
         __props__.__dict__["router_id"] = router_id
         return RouterRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            destination_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["destinationCidr"] = destination_cidr
+        __props__["nextHop"] = next_hop
+        __props__["region"] = region
+        __props__["routerId"] = router_id
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/routerRoute:RouterRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="destinationCidr")
     def destination_cidr(self) -> pulumi.Output[_builtins.str]:

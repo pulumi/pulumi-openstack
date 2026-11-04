@@ -279,6 +279,12 @@ func (ContainerObjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*containerObjectState)(nil)).Elem()
 }
 
+// ContainerObjectExists checks whether an existing ContainerObject resource with the given ID exists.
+func ContainerObjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContainerObjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:objectstorage/containerObject:ContainerObject", id, state, "", opts...)
+}
+
 type containerObjectArgs struct {
 	// A unique (within an account) name for the container.
 	// The container name must be from 1 to 256 characters long and can start

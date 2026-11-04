@@ -144,6 +144,12 @@ func (AddressGroupV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*addressGroupV2State)(nil)).Elem()
 }
 
+// AddressGroupV2Exists checks whether an existing AddressGroupV2 resource with the given ID exists.
+func AddressGroupV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AddressGroupV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/addressGroupV2:AddressGroupV2", id, state, "", opts...)
+}
+
 type addressGroupV2Args struct {
 	// A list of CIDR blocks that define the addresses in
 	// the address group. Each address must be a valid IPv4 or IPv6 CIDR block.

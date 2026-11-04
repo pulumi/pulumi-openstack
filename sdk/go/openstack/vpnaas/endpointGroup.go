@@ -161,6 +161,12 @@ func (EndpointGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointGroupState)(nil)).Elem()
 }
 
+// EndpointGroupExists checks whether an existing EndpointGroup resource with the given ID exists.
+func EndpointGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EndpointGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:vpnaas/endpointGroup:EndpointGroup", id, state, "", opts...)
+}
+
 type endpointGroupArgs struct {
 	// The human-readable description for the group.
 	// Changing this updates the description of the existing group.

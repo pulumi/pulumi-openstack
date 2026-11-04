@@ -1368,6 +1368,70 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["web_download"] = web_download
         return Image(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            container_format: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            decompress: pulumi.Input[Optional[_builtins.bool]] = None,
+            disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+            file: pulumi.Input[Optional[_builtins.str]] = None,
+            hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_cache_path: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_source_password: pulumi.Input[Optional[_builtins.str]] = None,
+            image_source_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image_source_username: pulumi.Input[Optional[_builtins.str]] = None,
+            local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            min_disk_gb: pulumi.Input[Optional[_builtins.int]] = None,
+            min_ram_mb: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None,
+            properties: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            verify_checksum: pulumi.Input[Optional[_builtins.bool]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            web_download: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checksum"] = checksum
+        __props__["containerFormat"] = container_format
+        __props__["createdAt"] = created_at
+        __props__["decompress"] = decompress
+        __props__["diskFormat"] = disk_format
+        __props__["file"] = file
+        __props__["hidden"] = hidden
+        __props__["imageCachePath"] = image_cache_path
+        __props__["imageId"] = image_id
+        __props__["imageSourcePassword"] = image_source_password
+        __props__["imageSourceUrl"] = image_source_url
+        __props__["imageSourceUsername"] = image_source_username
+        __props__["localFilePath"] = local_file_path
+        __props__["metadata"] = metadata
+        __props__["minDiskGb"] = min_disk_gb
+        __props__["minRamMb"] = min_ram_mb
+        __props__["name"] = name
+        __props__["owner"] = owner
+        __props__["properties"] = properties
+        __props__["protected"] = protected
+        __props__["region"] = region
+        __props__["schema"] = schema
+        __props__["sizeBytes"] = size_bytes
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["updatedAt"] = updated_at
+        __props__["verifyChecksum"] = verify_checksum
+        __props__["visibility"] = visibility
+        __props__["webDownload"] = web_download
+        return pulumi.runtime.exists_resource(None, 'openstack:images/image:Image', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def checksum(self) -> pulumi.Output[_builtins.str]:

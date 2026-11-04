@@ -144,6 +144,12 @@ func (VolumeTypeAccessV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeTypeAccessV3State)(nil)).Elem()
 }
 
+// VolumeTypeAccessV3Exists checks whether an existing VolumeTypeAccessV3 resource with the given ID exists.
+func VolumeTypeAccessV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeTypeAccessV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:blockstorage/volumeTypeAccessV3:VolumeTypeAccessV3", id, state, "", opts...)
+}
+
 type volumeTypeAccessV3Args struct {
 	// ID of the project to give access to. Changing this
 	// creates a new resource.

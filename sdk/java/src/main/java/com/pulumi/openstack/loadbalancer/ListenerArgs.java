@@ -337,7 +337,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The protocol can be either `TCP`, `HTTP`, `HTTPS`,
      * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-     * \&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
+     * &#92;&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
      * 2.25**). Changing this creates a new Listener.
      * 
      */
@@ -347,7 +347,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The protocol can be either `TCP`, `HTTP`, `HTTPS`,
      * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-     * \&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
+     * &#92;&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
      * 2.25**). Changing this creates a new Listener.
      * 
      */
@@ -1044,7 +1044,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param protocol The protocol can be either `TCP`, `HTTP`, `HTTPS`,
          * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-         * \&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
+         * &#92;&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
          * 2.25**). Changing this creates a new Listener.
          * 
          * @return builder
@@ -1058,7 +1058,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param protocol The protocol can be either `TCP`, `HTTP`, `HTTPS`,
          * `TERMINATED_HTTPS`, `UDP`, `SCTP` (supported only in **Octavia minor version
-         * \&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
+         * &#92;&gt;= 2.23**), or `PROMETHEUS` (supported only in **Octavia minor version &gt;=
          * 2.25**). Changing this creates a new Listener.
          * 
          * @return builder

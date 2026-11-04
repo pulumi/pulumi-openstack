@@ -271,6 +271,12 @@ func (RuleV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*ruleV2State)(nil)).Elem()
 }
 
+// RuleV2Exists checks whether an existing RuleV2 resource with the given ID exists.
+func RuleV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RuleV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:firewall/ruleV2:RuleV2", id, state, "", opts...)
+}
+
 type ruleV2Args struct {
 	// Action to be taken (must be "allow", "deny" or "reject")
 	// when the firewall rule matches. Changing this updates the `action` of an

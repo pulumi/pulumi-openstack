@@ -411,6 +411,12 @@ func (VolumeAttachState) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeAttachState)(nil)).Elem()
 }
 
+// VolumeAttachExists checks whether an existing VolumeAttach resource with the given ID exists.
+func VolumeAttachExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeAttachState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:compute/volumeAttach:VolumeAttach", id, state, "", opts...)
+}
+
 type volumeAttachArgs struct {
 	// The device of the volume attachment (ex: `/dev/vdc`).
 	// _NOTE_: Being able to specify a device is dependent upon the hypervisor in

@@ -229,6 +229,12 @@ func (MemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*memberState)(nil)).Elem()
 }
 
+// MemberExists checks whether an existing Member resource with the given ID exists.
+func MemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:loadbalancer/member:Member", id, state, "", opts...)
+}
+
 type memberArgs struct {
 	// The IP address of the member to receive traffic from
 	// the load balancer. Changing this creates a new member.

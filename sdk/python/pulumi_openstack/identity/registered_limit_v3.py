@@ -390,6 +390,22 @@ class RegisteredLimitV3(pulumi.CustomResource):
         __props__.__dict__["service_id"] = service_id
         return RegisteredLimitV3(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_name_: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultLimit"] = default_limit
+        __props__["description"] = description
+        __props__["region"] = region
+        __props__["resourceName"] = resource_name_
+        __props__["serviceId"] = service_id
+        return pulumi.runtime.exists_resource(None, 'openstack:identity/registeredLimitV3:RegisteredLimitV3', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultLimit")
     def default_limit(self) -> pulumi.Output[_builtins.int]:

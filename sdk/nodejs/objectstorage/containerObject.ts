@@ -27,6 +27,17 @@ export class ContainerObject extends pulumi.CustomResource {
         return new ContainerObject(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ContainerObject resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ContainerObjectState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("openstack:objectstorage/containerObject:ContainerObject", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'openstack:objectstorage/containerObject:ContainerObject';
 

@@ -2663,6 +2663,74 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["vendor_options"] = vendor_options
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_ip_v4: pulumi.Input[Optional[_builtins.str]] = None,
+            access_ip_v6: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_pass: pulumi.Input[Optional[_builtins.str]] = None,
+            all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            availability_zone_hints: pulumi.Input[Optional[_builtins.str]] = None,
+            block_devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBlockDeviceArgs', 'InstanceBlockDeviceArgsDict', 'outputs.InstanceBlockDevice']]]]] = None,
+            config_drive: pulumi.Input[Optional[_builtins.bool]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor_name: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            hypervisor_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            key_pair: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict', 'outputs.InstanceNetwork']]]]] = None,
+            personalities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstancePersonalityArgs', 'InstancePersonalityArgsDict', 'outputs.InstancePersonality']]]]] = None,
+            power_state: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler_hints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSchedulerHintArgs', 'InstanceSchedulerHintArgsDict', 'outputs.InstanceSchedulerHint']]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            stop_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vendor_options: pulumi.Input[Optional[Union['InstanceVendorOptionsArgs', 'InstanceVendorOptionsArgsDict', 'outputs.InstanceVendorOptions']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessIpV4"] = access_ip_v4
+        __props__["accessIpV6"] = access_ip_v6
+        __props__["adminPass"] = admin_pass
+        __props__["allMetadata"] = all_metadata
+        __props__["allTags"] = all_tags
+        __props__["availabilityZone"] = availability_zone
+        __props__["availabilityZoneHints"] = availability_zone_hints
+        __props__["blockDevices"] = block_devices
+        __props__["configDrive"] = config_drive
+        __props__["created"] = created
+        __props__["flavorId"] = flavor_id
+        __props__["flavorName"] = flavor_name
+        __props__["forceDelete"] = force_delete
+        __props__["hypervisorHostname"] = hypervisor_hostname
+        __props__["imageId"] = image_id
+        __props__["imageName"] = image_name
+        __props__["keyPair"] = key_pair
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["networkMode"] = network_mode
+        __props__["networks"] = networks
+        __props__["personalities"] = personalities
+        __props__["powerState"] = power_state
+        __props__["region"] = region
+        __props__["schedulerHints"] = scheduler_hints
+        __props__["securityGroups"] = security_groups
+        __props__["stopBeforeDestroy"] = stop_before_destroy
+        __props__["tags"] = tags
+        __props__["updated"] = updated
+        __props__["userData"] = user_data
+        __props__["vendorOptions"] = vendor_options
+        return pulumi.runtime.exists_resource(None, 'openstack:compute/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessIpV4")
     def access_ip_v4(self) -> pulumi.Output[_builtins.str]:

@@ -518,6 +518,12 @@ func (ClusterTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterTemplateState)(nil)).Elem()
 }
 
+// ClusterTemplateExists checks whether an existing ClusterTemplate resource with the given ID exists.
+func ClusterTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClusterTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:containerinfra/clusterTemplate:ClusterTemplate", id, state, "", opts...)
+}
+
 type clusterTemplateArgs struct {
 	// The API server port for the Container
 	// Orchestration Engine for this cluster template. Changing this updates the

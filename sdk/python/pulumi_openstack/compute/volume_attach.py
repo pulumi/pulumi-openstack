@@ -687,6 +687,26 @@ class VolumeAttach(pulumi.CustomResource):
         __props__.__dict__["volume_id"] = volume_id
         return VolumeAttach(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            device: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            multiattach: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.str]] = None,
+            vendor_options: pulumi.Input[Optional[Union['VolumeAttachVendorOptionsArgs', 'VolumeAttachVendorOptionsArgsDict', 'outputs.VolumeAttachVendorOptions']]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["device"] = device
+        __props__["instanceId"] = instance_id
+        __props__["multiattach"] = multiattach
+        __props__["region"] = region
+        __props__["tag"] = tag
+        __props__["vendorOptions"] = vendor_options
+        __props__["volumeId"] = volume_id
+        return pulumi.runtime.exists_resource(None, 'openstack:compute/volumeAttach:VolumeAttach', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def device(self) -> pulumi.Output[_builtins.str]:

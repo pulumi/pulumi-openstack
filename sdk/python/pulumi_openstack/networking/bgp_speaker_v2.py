@@ -607,6 +607,32 @@ class BgpSpeakerV2(pulumi.CustomResource):
         __props__.__dict__["tenant_id"] = tenant_id
         return BgpSpeakerV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advertise_floating_ip_host_routes: pulumi.Input[Optional[_builtins.bool]] = None,
+            advertise_tenant_networks: pulumi.Input[Optional[_builtins.bool]] = None,
+            advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BgpSpeakerV2AdvertisedRouteArgs', 'BgpSpeakerV2AdvertisedRouteArgsDict', 'outputs.BgpSpeakerV2AdvertisedRoute']]]]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+            local_as: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["advertiseFloatingIpHostRoutes"] = advertise_floating_ip_host_routes
+        __props__["advertiseTenantNetworks"] = advertise_tenant_networks
+        __props__["advertisedRoutes"] = advertised_routes
+        __props__["ipVersion"] = ip_version
+        __props__["localAs"] = local_as
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["peers"] = peers
+        __props__["region"] = region
+        __props__["tenantId"] = tenant_id
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/bgpSpeakerV2:BgpSpeakerV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="advertiseFloatingIpHostRoutes")
     def advertise_floating_ip_host_routes(self) -> pulumi.Output[_builtins.bool]:

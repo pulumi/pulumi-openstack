@@ -238,6 +238,12 @@ func (TrunkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*trunkState)(nil)).Elem()
 }
 
+// TrunkExists checks whether an existing Trunk resource with the given ID exists.
+func TrunkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TrunkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/trunk:Trunk", id, state, "", opts...)
+}
+
 type trunkArgs struct {
 	// Administrative up/down status for the trunk
 	// (must be "true" or "false" if provided). Changing this updates the

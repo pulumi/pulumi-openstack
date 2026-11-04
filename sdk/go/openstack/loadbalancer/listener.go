@@ -530,6 +530,12 @@ func (ListenerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*listenerState)(nil)).Elem()
 }
 
+// ListenerExists checks whether an existing Listener resource with the given ID exists.
+func ListenerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ListenerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:loadbalancer/listener:Listener", id, state, "", opts...)
+}
+
 type listenerArgs struct {
 	// The administrative state of the Listener. A
 	// valid value is true (UP) or false (DOWN).

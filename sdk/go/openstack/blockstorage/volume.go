@@ -268,6 +268,12 @@ func (VolumeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeState)(nil)).Elem()
 }
 
+// VolumeExists checks whether an existing Volume resource with the given ID exists.
+func VolumeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:blockstorage/volume:Volume", id, state, "", opts...)
+}
+
 type volumeArgs struct {
 	// The availability zone for the volume.
 	// Changing this creates a new volume.

@@ -401,6 +401,24 @@ class Ec2CredentialV3(pulumi.CustomResource):
         __props__.__dict__["user_id"] = user_id
         return Ec2CredentialV3(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            trust_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["access"] = access
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["secret"] = secret
+        __props__["trustId"] = trust_id
+        __props__["userId"] = user_id
+        return pulumi.runtime.exists_resource(None, 'openstack:identity/ec2CredentialV3:Ec2CredentialV3', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def access(self) -> pulumi.Output[_builtins.str]:

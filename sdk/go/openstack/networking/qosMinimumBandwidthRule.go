@@ -143,6 +143,12 @@ func (QosMinimumBandwidthRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosMinimumBandwidthRuleState)(nil)).Elem()
 }
 
+// QosMinimumBandwidthRuleExists checks whether an existing QosMinimumBandwidthRule resource with the given ID exists.
+func QosMinimumBandwidthRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QosMinimumBandwidthRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/qosMinimumBandwidthRule:QosMinimumBandwidthRule", id, state, "", opts...)
+}
+
 type qosMinimumBandwidthRuleArgs struct {
 	// The direction of traffic. Defaults to "egress". Changing this updates the direction of the
 	// existing QoS minimum bandwidth rule.

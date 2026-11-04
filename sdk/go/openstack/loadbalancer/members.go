@@ -140,6 +140,12 @@ func (MembersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*membersState)(nil)).Elem()
 }
 
+// MembersExists checks whether an existing Members resource with the given ID exists.
+func MembersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MembersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:loadbalancer/members:Members", id, state, "", opts...)
+}
+
 type membersArgs struct {
 	// A set of dictionaries containing member parameters. The
 	// structure is described below.

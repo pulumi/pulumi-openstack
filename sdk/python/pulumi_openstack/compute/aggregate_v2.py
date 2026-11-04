@@ -425,6 +425,22 @@ class AggregateV2(pulumi.CustomResource):
         __props__.__dict__["zone"] = zone
         return AggregateV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["hosts"] = hosts
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["zone"] = zone
+        return pulumi.runtime.exists_resource(None, 'openstack:compute/aggregateV2:AggregateV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def hosts(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

@@ -580,6 +580,32 @@ class TempUrl(pulumi.CustomResource):
         __props__.__dict__["url"] = url
         return TempUrl(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container: pulumi.Input[Optional[_builtins.str]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            method: pulumi.Input[Optional[_builtins.str]] = None,
+            object: pulumi.Input[Optional[_builtins.str]] = None,
+            regenerate: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            split: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["container"] = container
+        __props__["digest"] = digest
+        __props__["key"] = key
+        __props__["method"] = method
+        __props__["object"] = object
+        __props__["regenerate"] = regenerate
+        __props__["region"] = region
+        __props__["split"] = split
+        __props__["ttl"] = ttl
+        __props__["url"] = url
+        return pulumi.runtime.exists_resource(None, 'openstack:objectstorage/tempUrl:TempUrl', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def container(self) -> pulumi.Output[_builtins.str]:

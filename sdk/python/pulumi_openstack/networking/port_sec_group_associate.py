@@ -443,6 +443,22 @@ class PortSecGroupAssociate(pulumi.CustomResource):
         __props__.__dict__["security_group_ids"] = security_group_ids
         return PortSecGroupAssociate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all_security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            enforce: pulumi.Input[Optional[_builtins.bool]] = None,
+            port_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allSecurityGroupIds"] = all_security_group_ids
+        __props__["enforce"] = enforce
+        __props__["portId"] = port_id
+        __props__["region"] = region
+        __props__["securityGroupIds"] = security_group_ids
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/portSecGroupAssociate:PortSecGroupAssociate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allSecurityGroupIds")
     def all_security_group_ids(self) -> pulumi.Output[Sequence[_builtins.str]]:

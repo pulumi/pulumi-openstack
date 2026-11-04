@@ -248,11 +248,10 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
      * Enable legacy object versioning. The
      * structure is described below.
      * 
-     * @deprecated
-     * Use newer &#34;versioning&#34; implementation
+     * @deprecated Use newer &#34;versioning&#34; implementation
      * 
      */
-    @Deprecated /* Use newer ""versioning"" implementation */
+    @Deprecated
     @Import(name="versioningLegacy")
     private @Nullable Output<ContainerVersioningLegacyArgs> versioningLegacy;
 
@@ -260,11 +259,10 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
      * @return Enable legacy object versioning. The
      * structure is described below.
      * 
-     * @deprecated
-     * Use newer &#34;versioning&#34; implementation
+     * @deprecated Use newer &#34;versioning&#34; implementation
      * 
      */
-    @Deprecated /* Use newer ""versioning"" implementation */
+    @Deprecated
     public Optional<Output<ContainerVersioningLegacyArgs>> versioningLegacy() {
         return Optional.ofNullable(this.versioningLegacy);
     }
@@ -609,11 +607,10 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use newer &#34;versioning&#34; implementation
+         * @deprecated Use newer &#34;versioning&#34; implementation
          * 
          */
-        @Deprecated /* Use newer ""versioning"" implementation */
+        @Deprecated
         public Builder versioningLegacy(@Nullable Output<ContainerVersioningLegacyArgs> versioningLegacy) {
             $.versioningLegacy = versioningLegacy;
             return this;
@@ -625,11 +622,10 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use newer &#34;versioning&#34; implementation
+         * @deprecated Use newer &#34;versioning&#34; implementation
          * 
          */
-        @Deprecated /* Use newer ""versioning"" implementation */
+        @Deprecated
         public Builder versioningLegacy(ContainerVersioningLegacyArgs versioningLegacy) {
             return versioningLegacy(Output.of(versioningLegacy));
         }

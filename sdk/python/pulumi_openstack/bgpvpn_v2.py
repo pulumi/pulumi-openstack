@@ -688,6 +688,40 @@ class BgpvpnV2(pulumi.CustomResource):
         __props__.__dict__["vni"] = vni
         return BgpvpnV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            export_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            import_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            local_pref: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            route_distinguishers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            route_targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            routers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vni: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["exportTargets"] = export_targets
+        __props__["importTargets"] = import_targets
+        __props__["localPref"] = local_pref
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["ports"] = ports
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["routeDistinguishers"] = route_distinguishers
+        __props__["routeTargets"] = route_targets
+        __props__["routers"] = routers
+        __props__["shared"] = shared
+        __props__["type"] = type
+        __props__["vni"] = vni
+        return pulumi.runtime.exists_resource(None, 'openstack:index/bgpvpnV2:BgpvpnV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="exportTargets")
     def export_targets(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -510,6 +510,28 @@ class PortForwardingV2(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return PortForwardingV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            external_port: pulumi.Input[Optional[_builtins.int]] = None,
+            floatingip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_port: pulumi.Input[Optional[_builtins.int]] = None,
+            internal_port_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["externalPort"] = external_port
+        __props__["floatingipId"] = floatingip_id
+        __props__["internalIpAddress"] = internal_ip_address
+        __props__["internalPort"] = internal_port
+        __props__["internalPortId"] = internal_port_id
+        __props__["protocol"] = protocol
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/portForwardingV2:PortForwardingV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -179,6 +179,12 @@ func (LimitV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*limitV3State)(nil)).Elem()
 }
 
+// LimitV3Exists checks whether an existing LimitV3 resource with the given ID exists.
+func LimitV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LimitV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/limitV3:LimitV3", id, state, "", opts...)
+}
+
 type limitV3Args struct {
 	// Description of the limit.
 	Description *string `pulumi:"description"`

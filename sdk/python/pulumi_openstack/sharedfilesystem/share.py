@@ -839,6 +839,48 @@ class Share(pulumi.CustomResource):
         __props__.__dict__["snapshot_id"] = snapshot_id
         return Share(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            export_locations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ShareExportLocationArgs', 'ShareExportLocationArgsDict', 'outputs.ShareExportLocation']]]]] = None,
+            has_replicas: pulumi.Input[Optional[_builtins.bool]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_type: pulumi.Input[Optional[_builtins.str]] = None,
+            share_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_proto: pulumi.Input[Optional[_builtins.str]] = None,
+            share_server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_type: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allMetadata"] = all_metadata
+        __props__["availabilityZone"] = availability_zone
+        __props__["description"] = description
+        __props__["exportLocations"] = export_locations
+        __props__["hasReplicas"] = has_replicas
+        __props__["host"] = host
+        __props__["isPublic"] = is_public
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["replicationType"] = replication_type
+        __props__["shareNetworkId"] = share_network_id
+        __props__["shareProto"] = share_proto
+        __props__["shareServerId"] = share_server_id
+        __props__["shareType"] = share_type
+        __props__["size"] = size
+        __props__["snapshotId"] = snapshot_id
+        return pulumi.runtime.exists_resource(None, 'openstack:sharedfilesystem/share:Share', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allMetadata")
     def all_metadata(self) -> pulumi.Output[Mapping[str, _builtins.str]]:

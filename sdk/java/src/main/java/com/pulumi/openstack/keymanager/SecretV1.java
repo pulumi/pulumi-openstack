@@ -392,14 +392,14 @@ public class SecretV1 extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The secret&#39;s data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
+     * The secret&#39;s data to be stored. **payload&#92;_content&#92;_type** must also be supplied if **payload** is included.
      * 
      */
     @Export(name="payload", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payload;
 
     /**
-     * @return The secret&#39;s data to be stored. **payload\_content\_type** must also be supplied if **payload** is included.
+     * @return The secret&#39;s data to be stored. **payload&#92;_content&#92;_type** must also be supplied if **payload** is included.
      * 
      */
     public Output<Optional<String>> payload() {

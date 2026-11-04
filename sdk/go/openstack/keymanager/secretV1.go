@@ -387,6 +387,12 @@ func (SecretV1State) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretV1State)(nil)).Elem()
 }
 
+// SecretV1Exists checks whether an existing SecretV1 resource with the given ID exists.
+func SecretV1Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretV1State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:keymanager/secretV1:SecretV1", id, state, "", opts...)
+}
+
 type secretV1Args struct {
 	// Allows to control an access to a secret. Currently only the
 	// `read` operation is supported. If not specified, the secret is accessible

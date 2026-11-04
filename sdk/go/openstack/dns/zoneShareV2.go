@@ -139,6 +139,12 @@ func (ZoneShareV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneShareV2State)(nil)).Elem()
 }
 
+// ZoneShareV2Exists checks whether an existing ZoneShareV2 resource with the given ID exists.
+func ZoneShareV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneShareV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:dns/zoneShareV2:ZoneShareV2", id, state, "", opts...)
+}
+
 type zoneShareV2Args struct {
 	// The ID of the project DNS zone is created for, sets
 	// `X-Auth-Sudo-Tenant-ID` header (requires an assigned user role in target

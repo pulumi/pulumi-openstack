@@ -1667,6 +1667,68 @@ class Listener(pulumi.CustomResource):
         __props__.__dict__["tls_versions"] = tls_versions
         return Listener(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            allowed_cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            alpn_protocols: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            client_authentication: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            client_crl_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            default_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            default_tls_container_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            hsts_include_subdomains: pulumi.Input[Optional[_builtins.bool]] = None,
+            hsts_max_age: pulumi.Input[Optional[_builtins.int]] = None,
+            hsts_preload: pulumi.Input[Optional[_builtins.bool]] = None,
+            insert_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            loadbalancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            sni_container_refs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_client_data: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_member_connect: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_member_data: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_tcp_inspect: pulumi.Input[Optional[_builtins.int]] = None,
+            tls_ciphers: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_versions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminStateUp"] = admin_state_up
+        __props__["allowedCidrs"] = allowed_cidrs
+        __props__["alpnProtocols"] = alpn_protocols
+        __props__["clientAuthentication"] = client_authentication
+        __props__["clientCaTlsContainerRef"] = client_ca_tls_container_ref
+        __props__["clientCrlContainerRef"] = client_crl_container_ref
+        __props__["connectionLimit"] = connection_limit
+        __props__["defaultPoolId"] = default_pool_id
+        __props__["defaultTlsContainerRef"] = default_tls_container_ref
+        __props__["description"] = description
+        __props__["hstsIncludeSubdomains"] = hsts_include_subdomains
+        __props__["hstsMaxAge"] = hsts_max_age
+        __props__["hstsPreload"] = hsts_preload
+        __props__["insertHeaders"] = insert_headers
+        __props__["loadbalancerId"] = loadbalancer_id
+        __props__["name"] = name
+        __props__["protocol"] = protocol
+        __props__["protocolPort"] = protocol_port
+        __props__["region"] = region
+        __props__["sniContainerRefs"] = sni_container_refs
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        __props__["timeoutClientData"] = timeout_client_data
+        __props__["timeoutMemberConnect"] = timeout_member_connect
+        __props__["timeoutMemberData"] = timeout_member_data
+        __props__["timeoutTcpInspect"] = timeout_tcp_inspect
+        __props__["tlsCiphers"] = tls_ciphers
+        __props__["tlsVersions"] = tls_versions
+        return pulumi.runtime.exists_resource(None, 'openstack:loadbalancer/listener:Listener', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[_builtins.bool]]:

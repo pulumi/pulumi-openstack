@@ -94,7 +94,7 @@ public class V2 extends com.pulumi.resources.CustomResource {
         return this.importTargets;
     }
     /**
-     * The default BGP LOCAL\_PREF of routes that will be
+     * The default BGP LOCAL&#92;_PREF of routes that will be
      * advertised to the BGP VPN, unless overridden per-route.
      * 
      */
@@ -102,7 +102,7 @@ public class V2 extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Integer> localPref;
 
     /**
-     * @return The default BGP LOCAL\_PREF of routes that will be
+     * @return The default BGP LOCAL&#92;_PREF of routes that will be
      * advertised to the BGP VPN, unless overridden per-route.
      * 
      */

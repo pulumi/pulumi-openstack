@@ -705,6 +705,36 @@ class Flavor(pulumi.CustomResource):
         __props__.__dict__["vcpus"] = vcpus
         return Flavor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk: pulumi.Input[Optional[_builtins.int]] = None,
+            ephemeral: pulumi.Input[Optional[_builtins.int]] = None,
+            extra_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            ram: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            rx_tx_factor: pulumi.Input[Optional[_builtins.float]] = None,
+            swap: pulumi.Input[Optional[_builtins.int]] = None,
+            vcpus: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["disk"] = disk
+        __props__["ephemeral"] = ephemeral
+        __props__["extraSpecs"] = extra_specs
+        __props__["flavorId"] = flavor_id
+        __props__["isPublic"] = is_public
+        __props__["name"] = name
+        __props__["ram"] = ram
+        __props__["region"] = region
+        __props__["rxTxFactor"] = rx_tx_factor
+        __props__["swap"] = swap
+        __props__["vcpus"] = vcpus
+        return pulumi.runtime.exists_resource(None, 'openstack:compute/flavor:Flavor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

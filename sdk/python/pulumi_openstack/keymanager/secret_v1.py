@@ -951,6 +951,50 @@ class SecretV1(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return SecretV1(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[Union['SecretV1AclArgs', 'SecretV1AclArgsDict', 'outputs.SecretV1Acl']]] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            all_metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            bit_length: pulumi.Input[Optional[_builtins.int]] = None,
+            content_types: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            creator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            payload: pulumi.Input[Optional[_builtins.str]] = None,
+            payload_content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            payload_content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_ref: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["algorithm"] = algorithm
+        __props__["allMetadata"] = all_metadata
+        __props__["bitLength"] = bit_length
+        __props__["contentTypes"] = content_types
+        __props__["createdAt"] = created_at
+        __props__["creatorId"] = creator_id
+        __props__["expiration"] = expiration
+        __props__["metadata"] = metadata
+        __props__["mode"] = mode
+        __props__["name"] = name
+        __props__["payload"] = payload
+        __props__["payloadContentEncoding"] = payload_content_encoding
+        __props__["payloadContentType"] = payload_content_type
+        __props__["region"] = region
+        __props__["secretRef"] = secret_ref
+        __props__["secretType"] = secret_type
+        __props__["status"] = status
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'openstack:keymanager/secretV1:SecretV1', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output['outputs.SecretV1Acl']:

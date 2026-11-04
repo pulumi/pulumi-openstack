@@ -160,6 +160,12 @@ func (RegisteredLimitV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*registeredLimitV3State)(nil)).Elem()
 }
 
+// RegisteredLimitV3Exists checks whether an existing RegisteredLimitV3 resource with the given ID exists.
+func RegisteredLimitV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RegisteredLimitV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/registeredLimitV3:RegisteredLimitV3", id, state, "", opts...)
+}
+
 type registeredLimitV3Args struct {
 	// Integer for the actual limit.
 	DefaultLimit int `pulumi:"defaultLimit"`

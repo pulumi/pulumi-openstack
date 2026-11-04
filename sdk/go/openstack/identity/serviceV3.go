@@ -130,6 +130,12 @@ func (ServiceV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceV3State)(nil)).Elem()
 }
 
+// ServiceV3Exists checks whether an existing ServiceV3 resource with the given ID exists.
+func ServiceV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:identity/serviceV3:ServiceV3", id, state, "", opts...)
+}
+
 type serviceV3Args struct {
 	// The service description.
 	Description *string `pulumi:"description"`

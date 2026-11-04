@@ -182,6 +182,12 @@ func (PortForwardingV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*portForwardingV2State)(nil)).Elem()
 }
 
+// PortForwardingV2Exists checks whether an existing PortForwardingV2 resource with the given ID exists.
+func PortForwardingV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PortForwardingV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/portForwardingV2:PortForwardingV2", id, state, "", opts...)
+}
+
 type portForwardingV2Args struct {
 	// A text describing the port forwarding. Changing this
 	// updates the `description` of an existing port forwarding.

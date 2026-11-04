@@ -170,6 +170,12 @@ func (QuoteSetV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*quoteSetV3State)(nil)).Elem()
 }
 
+// QuoteSetV3Exists checks whether an existing QuoteSetV3 resource with the given ID exists.
+func QuoteSetV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuoteSetV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:blockstorage/quoteSetV3:QuoteSetV3", id, state, "", opts...)
+}
+
 type quoteSetV3Args struct {
 	// Quota value for backup gigabytes. Changing
 	// this updates the existing quotaset.

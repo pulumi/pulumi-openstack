@@ -143,6 +143,12 @@ func (ConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*configurationState)(nil)).Elem()
 }
 
+// ConfigurationExists checks whether an existing Configuration resource with the given ID exists.
+func ConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:database/configuration:Configuration", id, state, "", opts...)
+}
+
 type configurationArgs struct {
 	// An array of configuration parameter name and value. Can be specified multiple times. The configuration object structure is documented below.
 	Configurations []ConfigurationConfiguration `pulumi:"configurations"`

@@ -52,7 +52,7 @@ public final class BgpvpnV2Args extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The default BGP LOCAL\_PREF of routes that will be
+     * The default BGP LOCAL&#92;_PREF of routes that will be
      * advertised to the BGP VPN, unless overridden per-route.
      * 
      */
@@ -60,7 +60,7 @@ public final class BgpvpnV2Args extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> localPref;
 
     /**
-     * @return The default BGP LOCAL\_PREF of routes that will be
+     * @return The default BGP LOCAL&#92;_PREF of routes that will be
      * advertised to the BGP VPN, unless overridden per-route.
      * 
      */
@@ -295,7 +295,7 @@ public final class BgpvpnV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localPref The default BGP LOCAL\_PREF of routes that will be
+         * @param localPref The default BGP LOCAL&#92;_PREF of routes that will be
          * advertised to the BGP VPN, unless overridden per-route.
          * 
          * @return builder
@@ -307,7 +307,7 @@ public final class BgpvpnV2Args extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param localPref The default BGP LOCAL\_PREF of routes that will be
+         * @param localPref The default BGP LOCAL&#92;_PREF of routes that will be
          * advertised to the BGP VPN, unless overridden per-route.
          * 
          * @return builder

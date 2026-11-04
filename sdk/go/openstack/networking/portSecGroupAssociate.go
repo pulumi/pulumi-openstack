@@ -251,6 +251,12 @@ func (PortSecGroupAssociateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*portSecGroupAssociateState)(nil)).Elem()
 }
 
+// PortSecGroupAssociateExists checks whether an existing PortSecGroupAssociate resource with the given ID exists.
+func PortSecGroupAssociateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PortSecGroupAssociateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/portSecGroupAssociate:PortSecGroupAssociate", id, state, "", opts...)
+}
+
 type portSecGroupAssociateArgs struct {
 	// Whether to replace or append the list of security
 	// groups, specified in the `securityGroupIds`. Defaults to `false`.

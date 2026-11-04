@@ -414,6 +414,12 @@ func (InterfaceAttachState) ElementType() reflect.Type {
 	return reflect.TypeOf((*interfaceAttachState)(nil)).Elem()
 }
 
+// InterfaceAttachExists checks whether an existing InterfaceAttach resource with the given ID exists.
+func InterfaceAttachExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InterfaceAttachState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:compute/interfaceAttach:InterfaceAttach", id, state, "", opts...)
+}
+
 type interfaceAttachArgs struct {
 	// An IP address to assosciate with the port.
 	// _NOTE_: This option cannot be used with port_id. You must specifiy a network_id. The IP address must lie in a range on the supplied network.

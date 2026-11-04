@@ -951,6 +951,50 @@ class ContainerObject(pulumi.CustomResource):
         __props__.__dict__["trans_id"] = trans_id
         return ContainerObject(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_name: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            content_disposition: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            content_length: pulumi.Input[Optional[_builtins.int]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            copy_from: pulumi.Input[Optional[_builtins.str]] = None,
+            date: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_after: pulumi.Input[Optional[_builtins.int]] = None,
+            delete_at: pulumi.Input[Optional[_builtins.str]] = None,
+            detect_content_type: pulumi.Input[Optional[_builtins.bool]] = None,
+            etag: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_manifest: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            trans_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["containerName"] = container_name
+        __props__["content"] = content
+        __props__["contentDisposition"] = content_disposition
+        __props__["contentEncoding"] = content_encoding
+        __props__["contentLength"] = content_length
+        __props__["contentType"] = content_type
+        __props__["copyFrom"] = copy_from
+        __props__["date"] = date
+        __props__["deleteAfter"] = delete_after
+        __props__["deleteAt"] = delete_at
+        __props__["detectContentType"] = detect_content_type
+        __props__["etag"] = etag
+        __props__["lastModified"] = last_modified
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["objectManifest"] = object_manifest
+        __props__["region"] = region
+        __props__["source"] = source
+        __props__["transId"] = trans_id
+        return pulumi.runtime.exists_resource(None, 'openstack:objectstorage/containerObject:ContainerObject', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="containerName")
     def container_name(self) -> pulumi.Output[_builtins.str]:

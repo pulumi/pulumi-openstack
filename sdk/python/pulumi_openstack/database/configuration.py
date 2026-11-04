@@ -369,6 +369,22 @@ class Configuration(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return Configuration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConfigurationConfigurationArgs', 'ConfigurationConfigurationArgsDict', 'outputs.ConfigurationConfiguration']]]]] = None,
+            datastore: pulumi.Input[Optional[Union['ConfigurationDatastoreArgs', 'ConfigurationDatastoreArgsDict', 'outputs.ConfigurationDatastore']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["configurations"] = configurations
+        __props__["datastore"] = datastore
+        __props__["description"] = description
+        __props__["name"] = name
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'openstack:database/configuration:Configuration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def configurations(self) -> pulumi.Output[Optional[Sequence['outputs.ConfigurationConfiguration']]]:

@@ -385,6 +385,22 @@ class QosBandwidthLimitRule(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return QosBandwidthLimitRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            max_burst_kbps: pulumi.Input[Optional[_builtins.int]] = None,
+            max_kbps: pulumi.Input[Optional[_builtins.int]] = None,
+            qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["direction"] = direction
+        __props__["maxBurstKbps"] = max_burst_kbps
+        __props__["maxKbps"] = max_kbps
+        __props__["qosPolicyId"] = qos_policy_id
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/qosBandwidthLimitRule:QosBandwidthLimitRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def direction(self) -> pulumi.Output[Optional[_builtins.str]]:

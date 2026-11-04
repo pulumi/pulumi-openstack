@@ -149,6 +149,12 @@ func (BgpvpnRouterAssociateV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*bgpvpnRouterAssociateV2State)(nil)).Elem()
 }
 
+// BgpvpnRouterAssociateV2Exists checks whether an existing BgpvpnRouterAssociateV2 resource with the given ID exists.
+func BgpvpnRouterAssociateV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *BgpvpnRouterAssociateV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:index/bgpvpnRouterAssociateV2:BgpvpnRouterAssociateV2", id, state, "", opts...)
+}
+
 type bgpvpnRouterAssociateV2Args struct {
 	// A boolean flag indicating whether extra
 	// routes should be advertised. Defaults to true.

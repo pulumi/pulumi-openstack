@@ -1187,6 +1187,56 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["value_specs"] = value_specs
         return Subnet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allocation_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SubnetAllocationPoolArgs', 'SubnetAllocationPoolArgsDict', 'outputs.SubnetAllocationPool']]]]] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dns_publish_fixed_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv6_address_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_ra_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            no_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+            prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            segment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            subnetpool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allTags"] = all_tags
+        __props__["allocationPools"] = allocation_pools
+        __props__["cidr"] = cidr
+        __props__["description"] = description
+        __props__["dnsNameservers"] = dns_nameservers
+        __props__["dnsPublishFixedIp"] = dns_publish_fixed_ip
+        __props__["enableDhcp"] = enable_dhcp
+        __props__["gatewayIp"] = gateway_ip
+        __props__["ipVersion"] = ip_version
+        __props__["ipv6AddressMode"] = ipv6_address_mode
+        __props__["ipv6RaMode"] = ipv6_ra_mode
+        __props__["name"] = name
+        __props__["networkId"] = network_id
+        __props__["noGateway"] = no_gateway
+        __props__["prefixLength"] = prefix_length
+        __props__["region"] = region
+        __props__["segmentId"] = segment_id
+        __props__["serviceTypes"] = service_types
+        __props__["subnetpoolId"] = subnetpool_id
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        __props__["valueSpecs"] = value_specs
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/subnet:Subnet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allTags")
     def all_tags(self) -> pulumi.Output[Sequence[_builtins.str]]:

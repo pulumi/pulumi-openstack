@@ -487,6 +487,26 @@ class BgpPeerV2(pulumi.CustomResource):
         __props__.__dict__["tenant_id"] = tenant_id
         return BgpPeerV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_as: pulumi.Input[Optional[_builtins.int]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authType"] = auth_type
+        __props__["name"] = name
+        __props__["password"] = password
+        __props__["peerIp"] = peer_ip
+        __props__["region"] = region
+        __props__["remoteAs"] = remote_as
+        __props__["tenantId"] = tenant_id
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/bgpPeerV2:BgpPeerV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authType")
     def auth_type(self) -> pulumi.Output[Optional[_builtins.str]]:

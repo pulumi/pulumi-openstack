@@ -336,6 +336,20 @@ class QosV3(pulumi.CustomResource):
         __props__.__dict__["specs"] = specs
         return QosV3(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            consumer: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["consumer"] = consumer
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["specs"] = specs
+        return pulumi.runtime.exists_resource(None, 'openstack:blockstorage/qosV3:QosV3', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def consumer(self) -> pulumi.Output[Optional[_builtins.str]]:

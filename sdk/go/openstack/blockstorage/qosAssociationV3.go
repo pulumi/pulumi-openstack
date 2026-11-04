@@ -146,6 +146,12 @@ func (QosAssociationV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosAssociationV3State)(nil)).Elem()
 }
 
+// QosAssociationV3Exists checks whether an existing QosAssociationV3 resource with the given ID exists.
+func QosAssociationV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QosAssociationV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:blockstorage/qosAssociationV3:QosAssociationV3", id, state, "", opts...)
+}
+
 type qosAssociationV3Args struct {
 	// ID of the qos to associate. Changing this creates
 	// a new qos association.

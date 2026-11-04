@@ -22,7 +22,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     public partial class ContainerObject : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A unique (within an account) name for the container. 
+        /// A unique (within an account) name for the container.
         /// The container name must be from 1 to 256 characters long and can start
         /// with any character and contain any pattern. Character set must be UTF-8.
         /// The container name cannot contain a slash (/) character because this
@@ -40,7 +40,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string?> Content { get; private set; } = null!;
 
         /// <summary>
-        /// A string which specifies the override behavior for 
+        /// A string which specifies the override behavior for
         /// the browser. For example, this header might specify that the browser use a download
         /// program to save this file rather than show the file, which is the default.
         /// </summary>
@@ -55,7 +55,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string> ContentEncoding { get; private set; } = null!;
 
         /// <summary>
-        /// If the operation succeeds, this value is zero (0) or the 
+        /// If the operation succeeds, this value is zero (0) or the
         /// length of informational or error text in the response body.
         /// </summary>
         [Output("contentLength")]
@@ -68,7 +68,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string> ContentType { get; private set; } = null!;
 
         /// <summary>
-        /// A string representing the name of an object 
+        /// A string representing the name of an object
         /// used to create the new object by copying the `CopyFrom` object. The value is in form
         /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
         /// container and object before you include them in the header. Conflicts with `Source` and
@@ -78,7 +78,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string?> CopyFrom { get; private set; } = null!;
 
         /// <summary>
-        /// The date and time the system responded to the request, using the preferred 
+        /// The date and time the system responded to the request, using the preferred
         /// format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
         /// time is always in UTC.
         /// </summary>
@@ -94,14 +94,14 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<int?> DeleteAfter { get; private set; } = null!;
 
         /// <summary>
-        /// An string representing the date when the system removes the object. 
+        /// An string representing the date when the system removes the object.
         /// For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         /// </summary>
         [Output("deleteAt")]
         public Output<string> DeleteAt { get; private set; } = null!;
 
         /// <summary>
-        /// If set to true, Object Storage guesses the content 
+        /// If set to true, Object Storage guesses the content
         /// type based on the file extension and ignores the value sent in the Content-Type
         /// header, if present.
         /// </summary>
@@ -115,7 +115,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// The date and time when the object was last modified. The date and time 
+        /// The date and time when the object was last modified. The date and time
         /// stamp format is ISO 8601:
         /// CCYY-MM-DDThh:mm:ss±hh:mm
         /// For example, 2015-08-27T09:49:58-05:00.
@@ -135,7 +135,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A string set to specify that this is a dynamic large 
+        /// A string set to specify that this is a dynamic large
         /// object manifest object. The value is the container and object name prefix of the
         /// segment objects in the form container/prefix. You must UTF-8-encode and then
         /// URL-encode the names of the container and prefix before you include them in this
@@ -160,7 +160,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Output<string?> Source { get; private set; } = null!;
 
         /// <summary>
-        /// A unique transaction ID for this request. Your service provider might 
+        /// A unique transaction ID for this request. Your service provider might
         /// need this value if you report a problem.
         /// </summary>
         [Output("transId")]
@@ -213,7 +213,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     public sealed class ContainerObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A unique (within an account) name for the container. 
+        /// A unique (within an account) name for the container.
         /// The container name must be from 1 to 256 characters long and can start
         /// with any character and contain any pattern. Character set must be UTF-8.
         /// The container name cannot contain a slash (/) character because this
@@ -231,7 +231,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// A string which specifies the override behavior for 
+        /// A string which specifies the override behavior for
         /// the browser. For example, this header might specify that the browser use a download
         /// program to save this file rather than show the file, which is the default.
         /// </summary>
@@ -252,7 +252,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// A string representing the name of an object 
+        /// A string representing the name of an object
         /// used to create the new object by copying the `CopyFrom` object. The value is in form
         /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
         /// container and object before you include them in the header. Conflicts with `Source` and
@@ -270,14 +270,14 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<int>? DeleteAfter { get; set; }
 
         /// <summary>
-        /// An string representing the date when the system removes the object. 
+        /// An string representing the date when the system removes the object.
         /// For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         /// </summary>
         [Input("deleteAt")]
         public Input<string>? DeleteAt { get; set; }
 
         /// <summary>
-        /// If set to true, Object Storage guesses the content 
+        /// If set to true, Object Storage guesses the content
         /// type based on the file extension and ignores the value sent in the Content-Type
         /// header, if present.
         /// </summary>
@@ -305,7 +305,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A string set to specify that this is a dynamic large 
+        /// A string set to specify that this is a dynamic large
         /// object manifest object. The value is the container and object name prefix of the
         /// segment objects in the form container/prefix. You must UTF-8-encode and then
         /// URL-encode the names of the container and prefix before you include them in this
@@ -338,7 +338,7 @@ namespace Pulumi.OpenStack.ObjectStorage
     public sealed class ContainerObjectState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A unique (within an account) name for the container. 
+        /// A unique (within an account) name for the container.
         /// The container name must be from 1 to 256 characters long and can start
         /// with any character and contain any pattern. Character set must be UTF-8.
         /// The container name cannot contain a slash (/) character because this
@@ -356,7 +356,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// A string which specifies the override behavior for 
+        /// A string which specifies the override behavior for
         /// the browser. For example, this header might specify that the browser use a download
         /// program to save this file rather than show the file, which is the default.
         /// </summary>
@@ -371,7 +371,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? ContentEncoding { get; set; }
 
         /// <summary>
-        /// If the operation succeeds, this value is zero (0) or the 
+        /// If the operation succeeds, this value is zero (0) or the
         /// length of informational or error text in the response body.
         /// </summary>
         [Input("contentLength")]
@@ -384,7 +384,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// A string representing the name of an object 
+        /// A string representing the name of an object
         /// used to create the new object by copying the `CopyFrom` object. The value is in form
         /// {container}/{object}. You must UTF-8-encode and then URL-encode the names of the
         /// container and object before you include them in the header. Conflicts with `Source` and
@@ -394,7 +394,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? CopyFrom { get; set; }
 
         /// <summary>
-        /// The date and time the system responded to the request, using the preferred 
+        /// The date and time the system responded to the request, using the preferred
         /// format of RFC 7231 as shown in this example Thu, 16 Jun 2016 15:10:38 GMT. The
         /// time is always in UTC.
         /// </summary>
@@ -410,14 +410,14 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<int>? DeleteAfter { get; set; }
 
         /// <summary>
-        /// An string representing the date when the system removes the object. 
+        /// An string representing the date when the system removes the object.
         /// For example, "2015-08-26" is equivalent to Mon, Wed, 26 Aug 2015 00:00:00 GMT.
         /// </summary>
         [Input("deleteAt")]
         public Input<string>? DeleteAt { get; set; }
 
         /// <summary>
-        /// If set to true, Object Storage guesses the content 
+        /// If set to true, Object Storage guesses the content
         /// type based on the file extension and ignores the value sent in the Content-Type
         /// header, if present.
         /// </summary>
@@ -431,7 +431,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// The date and time when the object was last modified. The date and time 
+        /// The date and time when the object was last modified. The date and time
         /// stamp format is ISO 8601:
         /// CCYY-MM-DDThh:mm:ss±hh:mm
         /// For example, 2015-08-27T09:49:58-05:00.
@@ -456,7 +456,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A string set to specify that this is a dynamic large 
+        /// A string set to specify that this is a dynamic large
         /// object manifest object. The value is the container and object name prefix of the
         /// segment objects in the form container/prefix. You must UTF-8-encode and then
         /// URL-encode the names of the container and prefix before you include them in this
@@ -481,7 +481,7 @@ namespace Pulumi.OpenStack.ObjectStorage
         public Input<string>? Source { get; set; }
 
         /// <summary>
-        /// A unique transaction ID for this request. Your service provider might 
+        /// A unique transaction ID for this request. Your service provider might
         /// need this value if you report a problem.
         /// </summary>
         [Input("transId")]

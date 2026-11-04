@@ -223,6 +223,12 @@ func (V2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*v2State)(nil)).Elem()
 }
 
+// V2Exists checks whether an existing V2 resource with the given ID exists.
+func V2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *V2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:bgpvpn/v2:V2", id, state, "", opts...)
+}
+
 type v2Args struct {
 	// A list of additional Route Targets that will be
 	// used for export.

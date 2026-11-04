@@ -79,20 +79,20 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var flavorprofile1 = new FlavorprofileV2("flavorprofile1", FlavorprofileV2Args.builder()
  *             .name("amphora-single-profile")
  *             .providerName("amphora")
- *             .flavorData("{\"loadbalancer_topology\": \"SINGLE\"}")
+ *             .flavorData("}{&#92;{@code "loadbalancer_topology}&#92;{@code ": }&#92;{@code "SINGLE}&#92;{@code "}}{@code ")
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

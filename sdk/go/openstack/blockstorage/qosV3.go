@@ -133,6 +133,12 @@ func (QosV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*qosV3State)(nil)).Elem()
 }
 
+// QosV3Exists checks whether an existing QosV3 resource with the given ID exists.
+func QosV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QosV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:blockstorage/qosV3:QosV3", id, state, "", opts...)
+}
+
 type qosV3Args struct {
 	// The consumer of qos. Can be one of `front-end`,
 	// `back-end` or `both`. Changing this updates the `consumer` of an

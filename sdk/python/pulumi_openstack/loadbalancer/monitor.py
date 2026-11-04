@@ -896,6 +896,42 @@ class Monitor(pulumi.CustomResource):
         __props__.__dict__["url_path"] = url_path
         return Monitor(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            delay: pulumi.Input[Optional[_builtins.int]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            expected_codes: pulumi.Input[Optional[_builtins.str]] = None,
+            http_method: pulumi.Input[Optional[_builtins.str]] = None,
+            http_version: pulumi.Input[Optional[_builtins.str]] = None,
+            max_retries: pulumi.Input[Optional[_builtins.int]] = None,
+            max_retries_down: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            url_path: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminStateUp"] = admin_state_up
+        __props__["delay"] = delay
+        __props__["domainName"] = domain_name
+        __props__["expectedCodes"] = expected_codes
+        __props__["httpMethod"] = http_method
+        __props__["httpVersion"] = http_version
+        __props__["maxRetries"] = max_retries
+        __props__["maxRetriesDown"] = max_retries_down
+        __props__["name"] = name
+        __props__["poolId"] = pool_id
+        __props__["region"] = region
+        __props__["tenantId"] = tenant_id
+        __props__["timeout"] = timeout
+        __props__["type"] = type
+        __props__["urlPath"] = url_path
+        return pulumi.runtime.exists_resource(None, 'openstack:loadbalancer/monitor:Monitor', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminStateUp")
     def admin_state_up(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -325,6 +325,12 @@ func (SecGroupRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secGroupRuleState)(nil)).Elem()
 }
 
+// SecGroupRuleExists checks whether an existing SecGroupRule resource with the given ID exists.
+func SecGroupRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecGroupRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/secGroupRule:SecGroupRule", id, state, "", opts...)
+}
+
 type secGroupRuleArgs struct {
 	// A description of the rule. Changing this creates a new security group rule.
 	Description *string `pulumi:"description"`

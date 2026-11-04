@@ -850,6 +850,40 @@ class FloatingIp(pulumi.CustomResource):
         __props__.__dict__["value_specs"] = value_specs
         return FloatingIp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            all_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            fixed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            pool: pulumi.Input[Optional[_builtins.str]] = None,
+            port_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value_specs: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["allTags"] = all_tags
+        __props__["description"] = description
+        __props__["dnsDomain"] = dns_domain
+        __props__["dnsName"] = dns_name
+        __props__["fixedIp"] = fixed_ip
+        __props__["pool"] = pool
+        __props__["portId"] = port_id
+        __props__["region"] = region
+        __props__["subnetId"] = subnet_id
+        __props__["subnetIds"] = subnet_ids
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        __props__["valueSpecs"] = value_specs
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/floatingIp:FloatingIp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

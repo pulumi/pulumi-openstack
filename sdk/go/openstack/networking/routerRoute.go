@@ -181,6 +181,12 @@ func (RouterRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerRouteState)(nil)).Elem()
 }
 
+// RouterRouteExists checks whether an existing RouterRoute resource with the given ID exists.
+func RouterRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RouterRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/routerRoute:RouterRoute", id, state, "", opts...)
+}
+
 type routerRouteArgs struct {
 	// CIDR block to match on the packet’s destination IP. Changing
 	// this creates a new routing entry.

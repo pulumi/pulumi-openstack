@@ -195,6 +195,12 @@ func (IpSecPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipSecPolicyState)(nil)).Elem()
 }
 
+// IpSecPolicyExists checks whether an existing IpSecPolicy resource with the given ID exists.
+func IpSecPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IpSecPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:vpnaas/ipSecPolicy:IpSecPolicy", id, state, "", opts...)
+}
+
 type ipSecPolicyArgs struct {
 	// The authentication hash algorithm. Valid values are sha1, sha256, sha384, sha512,
 	// aes-xcbc, aes-cmac. Default is sha1.

@@ -174,6 +174,12 @@ func (VolumeTypeV3State) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeTypeV3State)(nil)).Elem()
 }
 
+// VolumeTypeV3Exists checks whether an existing VolumeTypeV3 resource with the given ID exists.
+func VolumeTypeV3Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeTypeV3State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:blockstorage/volumeTypeV3:VolumeTypeV3", id, state, "", opts...)
+}
+
 type volumeTypeV3Args struct {
 	// Human-readable description of the port. Changing
 	// this updates the `description` of an existing volume type.

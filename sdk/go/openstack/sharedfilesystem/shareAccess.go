@@ -303,6 +303,12 @@ func (ShareAccessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*shareAccessState)(nil)).Elem()
 }
 
+// ShareAccessExists checks whether an existing ShareAccess resource with the given ID exists.
+func ShareAccessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ShareAccessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:sharedfilesystem/shareAccess:ShareAccess", id, state, "", opts...)
+}
+
 type shareAccessArgs struct {
 	// The access level to the share. Can either be `rw` or `ro`.
 	AccessLevel string `pulumi:"accessLevel"`

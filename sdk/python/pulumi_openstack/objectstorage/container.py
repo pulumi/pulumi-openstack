@@ -981,6 +981,38 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["versioning_legacy"] = versioning_legacy
         return Container(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_read: pulumi.Input[Optional[_builtins.str]] = None,
+            container_sync_key: pulumi.Input[Optional[_builtins.str]] = None,
+            container_sync_to: pulumi.Input[Optional[_builtins.str]] = None,
+            container_write: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            metadata: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_class: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            versioning: pulumi.Input[Optional[_builtins.bool]] = None,
+            versioning_legacy: pulumi.Input[Optional[Union['ContainerVersioningLegacyArgs', 'ContainerVersioningLegacyArgsDict', 'outputs.ContainerVersioningLegacy']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["containerRead"] = container_read
+        __props__["containerSyncKey"] = container_sync_key
+        __props__["containerSyncTo"] = container_sync_to
+        __props__["containerWrite"] = container_write
+        __props__["contentType"] = content_type
+        __props__["forceDestroy"] = force_destroy
+        __props__["metadata"] = metadata
+        __props__["name"] = name
+        __props__["region"] = region
+        __props__["storageClass"] = storage_class
+        __props__["storagePolicy"] = storage_policy
+        __props__["versioning"] = versioning
+        __props__["versioningLegacy"] = versioning_legacy
+        return pulumi.runtime.exists_resource(None, 'openstack:objectstorage/container:Container', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="containerRead")
     def container_read(self) -> pulumi.Output[Optional[_builtins.str]]:

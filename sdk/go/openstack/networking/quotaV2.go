@@ -176,6 +176,12 @@ func (QuotaV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaV2State)(nil)).Elem()
 }
 
+// QuotaV2Exists checks whether an existing QuotaV2 resource with the given ID exists.
+func QuotaV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuotaV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:networking/quotaV2:QuotaV2", id, state, "", opts...)
+}
+
 type quotaV2Args struct {
 	// Quota value for floating IPs. Changing this updates the
 	// existing quota.

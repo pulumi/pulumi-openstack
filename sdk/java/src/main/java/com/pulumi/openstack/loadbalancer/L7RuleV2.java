@@ -136,7 +136,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
     }
     /**
      * The comparison type for the L7 rule - can either be
-     * CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
+     * CONTAINS, STARTS&#92;_WITH, ENDS_WITH, EQUAL_TO or REGEX
      * 
      */
     @Export(name="compareType", refs={String.class}, tree="[0]")
@@ -144,7 +144,7 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The comparison type for the L7 rule - can either be
-     * CONTAINS, STARTS\_WITH, ENDS_WITH, EQUAL_TO or REGEX
+     * CONTAINS, STARTS&#92;_WITH, ENDS_WITH, EQUAL_TO or REGEX
      * 
      */
     public Output<String> compareType() {
@@ -251,16 +251,16 @@ public class L7RuleV2 extends com.pulumi.resources.CustomResource {
         return this.tenantId;
     }
     /**
-     * The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-     * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
+     * The L7 Rule type - can either be COOKIE, FILE&#92;_TYPE, HEADER,
+     * HOST&#92;_NAME, PATH, SSL&#92;_CONN&#92;_HAS&#92;_CERT, SSL&#92;_VERIFY&#92;_RESULT or SSL&#92;_DN&#92;_FIELD.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The L7 Rule type - can either be COOKIE, FILE\_TYPE, HEADER,
-     * HOST\_NAME, PATH, SSL\_CONN\_HAS\_CERT, SSL\_VERIFY\_RESULT or SSL\_DN\_FIELD.
+     * @return The L7 Rule type - can either be COOKIE, FILE&#92;_TYPE, HEADER,
+     * HOST&#92;_NAME, PATH, SSL&#92;_CONN&#92;_HAS&#92;_CERT, SSL&#92;_VERIFY&#92;_RESULT or SSL&#92;_DN&#92;_FIELD.
      * 
      */
     public Output<String> type() {

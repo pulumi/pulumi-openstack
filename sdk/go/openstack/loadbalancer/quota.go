@@ -205,6 +205,12 @@ func (QuotaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*quotaState)(nil)).Elem()
 }
 
+// QuotaExists checks whether an existing Quota resource with the given ID exists.
+func QuotaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *QuotaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:loadbalancer/quota:Quota", id, state, "", opts...)
+}
+
 type quotaArgs struct {
 	// Quota value for health_monitors. Changing
 	// this updates the existing quota. Omitting it sets it to 0.

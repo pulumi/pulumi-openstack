@@ -356,6 +356,18 @@ class RouterRoutesV2(pulumi.CustomResource):
         __props__.__dict__["routes"] = routes
         return RouterRoutesV2(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RouterRoutesV2RouteArgs', 'RouterRoutesV2RouteArgsDict', 'outputs.RouterRoutesV2Route']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["region"] = region
+        __props__["routerId"] = router_id
+        __props__["routes"] = routes
+        return pulumi.runtime.exists_resource(None, 'openstack:networking/routerRoutesV2:RouterRoutesV2', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:

@@ -269,6 +269,12 @@ func (GroupV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupV2State)(nil)).Elem()
 }
 
+// GroupV2Exists checks whether an existing GroupV2 resource with the given ID exists.
+func GroupV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:firewall/groupV2:GroupV2", id, state, "", opts...)
+}
+
 type groupV2Args struct {
 	// Administrative up/down status for the firewall
 	// group (must be "true" or "false" if provided - defaults to "true").

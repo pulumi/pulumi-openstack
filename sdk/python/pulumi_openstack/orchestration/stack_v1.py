@@ -960,6 +960,46 @@ class StackV1(pulumi.CustomResource):
         __props__.__dict__["updated_time"] = updated_time
         return StackV1(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            stack_outputs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackV1StackOutputArgs', 'StackV1StackOutputArgsDict', 'outputs.StackV1StackOutput']]]]] = None,
+            capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_rollback: pulumi.Input[Optional[_builtins.bool]] = None,
+            environment_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_topics: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template_description: pulumi.Input[Optional[_builtins.str]] = None,
+            template_opts: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            updated_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["StackOutputs"] = stack_outputs
+        __props__["capabilities"] = capabilities
+        __props__["creationTime"] = creation_time
+        __props__["description"] = description
+        __props__["disableRollback"] = disable_rollback
+        __props__["environmentOpts"] = environment_opts
+        __props__["name"] = name
+        __props__["notificationTopics"] = notification_topics
+        __props__["parameters"] = parameters
+        __props__["region"] = region
+        __props__["status"] = status
+        __props__["statusReason"] = status_reason
+        __props__["tags"] = tags
+        __props__["templateDescription"] = template_description
+        __props__["templateOpts"] = template_opts
+        __props__["timeout"] = timeout
+        __props__["updatedTime"] = updated_time
+        return pulumi.runtime.exists_resource(None, 'openstack:orchestration/stackV1:StackV1', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="StackOutputs")
     def stack_outputs(self) -> pulumi.Output[Sequence['outputs.StackV1StackOutput']]:

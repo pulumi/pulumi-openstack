@@ -754,6 +754,38 @@ class Member(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return Member(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_state_up: pulumi.Input[Optional[_builtins.bool]] = None,
+            backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            monitor_address: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_port: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_port: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["adminStateUp"] = admin_state_up
+        __props__["backup"] = backup
+        __props__["monitorAddress"] = monitor_address
+        __props__["monitorPort"] = monitor_port
+        __props__["name"] = name
+        __props__["poolId"] = pool_id
+        __props__["protocolPort"] = protocol_port
+        __props__["region"] = region
+        __props__["subnetId"] = subnet_id
+        __props__["tags"] = tags
+        __props__["tenantId"] = tenant_id
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'openstack:loadbalancer/member:Member', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

@@ -256,6 +256,12 @@ func (L7RuleV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*l7ruleV2State)(nil)).Elem()
 }
 
+// L7RuleV2Exists checks whether an existing L7RuleV2 resource with the given ID exists.
+func L7RuleV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *L7RuleV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("openstack:loadbalancer/l7RuleV2:L7RuleV2", id, state, "", opts...)
+}
+
 type l7ruleV2Args struct {
 	// The administrative state of the L7 Rule.
 	// A valid value is true (UP) or false (DOWN).

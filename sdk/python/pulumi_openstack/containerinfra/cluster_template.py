@@ -1796,6 +1796,78 @@ class ClusterTemplate(pulumi.CustomResource):
         __props__.__dict__["volume_driver"] = volume_driver
         return ClusterTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            apiserver_port: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_distro: pulumi.Input[Optional[_builtins.str]] = None,
+            coe: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_nameserver: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_storage_driver: pulumi.Input[Optional[_builtins.str]] = None,
+            docker_volume_size: pulumi.Input[Optional[_builtins.int]] = None,
+            external_network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            fixed_network: pulumi.Input[Optional[_builtins.str]] = None,
+            fixed_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor: pulumi.Input[Optional[_builtins.str]] = None,
+            floating_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            hidden: pulumi.Input[Optional[_builtins.bool]] = None,
+            http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+            https_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
+            insecure_registry: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            master_flavor: pulumi.Input[Optional[_builtins.str]] = None,
+            master_lb_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_driver: pulumi.Input[Optional[_builtins.str]] = None,
+            no_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            server_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_driver: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiserverPort"] = apiserver_port
+        __props__["clusterDistro"] = cluster_distro
+        __props__["coe"] = coe
+        __props__["createdAt"] = created_at
+        __props__["dnsNameserver"] = dns_nameserver
+        __props__["dockerStorageDriver"] = docker_storage_driver
+        __props__["dockerVolumeSize"] = docker_volume_size
+        __props__["externalNetworkId"] = external_network_id
+        __props__["fixedNetwork"] = fixed_network
+        __props__["fixedSubnet"] = fixed_subnet
+        __props__["flavor"] = flavor
+        __props__["floatingIpEnabled"] = floating_ip_enabled
+        __props__["hidden"] = hidden
+        __props__["httpProxy"] = http_proxy
+        __props__["httpsProxy"] = https_proxy
+        __props__["image"] = image
+        __props__["insecureRegistry"] = insecure_registry
+        __props__["keypairId"] = keypair_id
+        __props__["labels"] = labels
+        __props__["masterFlavor"] = master_flavor
+        __props__["masterLbEnabled"] = master_lb_enabled
+        __props__["name"] = name
+        __props__["networkDriver"] = network_driver
+        __props__["noProxy"] = no_proxy
+        __props__["projectId"] = project_id
+        __props__["public"] = public
+        __props__["region"] = region
+        __props__["registryEnabled"] = registry_enabled
+        __props__["serverType"] = server_type
+        __props__["tlsDisabled"] = tls_disabled
+        __props__["updatedAt"] = updated_at
+        __props__["userId"] = user_id
+        __props__["volumeDriver"] = volume_driver
+        return pulumi.runtime.exists_resource(None, 'openstack:containerinfra/clusterTemplate:ClusterTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiserverPort")
     def apiserver_port(self) -> pulumi.Output[Optional[_builtins.int]]:
